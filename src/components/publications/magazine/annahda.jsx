@@ -1,0 +1,182 @@
+// src/components/committtee/magazine/annahda.jsx
+
+"use client";
+
+import { BookOpen, Calendar, Download, Eye, Share2, Award, Users, TrendingUp, Sparkles, ChevronRight, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function AnnahdaPage() {
+  const magazineInfo = {
+    title: "Annahda",
+    tagline: "Inspiring Growth, Celebrating Success",
+    coverImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=1000&fit=crop",
+    category: "Magazine",
+    issue: "Vol. 5, Issue 12",
+    date: "December 2024",
+    pages: "48 pages",
+    language: "English & Malayalam",
+    frequency: "Bi-Monthly",
+  };
+
+  const features = [
+    {
+      icon: Award,
+      title: "Excellence Spotlights",
+      description: "In-depth profiles of outstanding members and their remarkable achievements in business and innovation.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Market Insights",
+      description: "Comprehensive analysis of industry trends, market dynamics, and economic forecasts from expert contributors.",
+    },
+    {
+      icon: Users,
+      title: "Community Stories",
+      description: "Heartwarming narratives of collaboration, mentorship, and the positive impact of our community initiatives.",
+    },
+    {
+      icon: Sparkles,
+      title: "Innovation Corner",
+      description: "Showcasing cutting-edge projects, startup success stories, and breakthrough ideas from our ecosystem.",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-purple-50/30 to-white pt-32">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col lg:flex-row items-center gap-12"
+          >
+            {/* Magazine Cover */}
+            <div className="lg:w-2/5">
+              <motion.div
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                className="relative group"
+              >
+                <div className="absolute -inset-4 bg-white/20 backdrop-blur-sm rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+                <img
+                  src={magazineInfo.coverImage}
+                  alt={magazineInfo.title}
+                  className="relative z-10 w-full max-w-md mx-auto rounded-2xl shadow-2xl"
+                />
+              </motion.div>
+            </div>
+
+            {/* Magazine Info */}
+            <div className="lg:w-3/5 text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <div className="inline-block mb-4">
+                  <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold">
+                    {magazineInfo.category}
+                  </span>
+                </div>
+                <h1 className="text-5xl md:text-7xl font-bold mb-4">
+                  {magazineInfo.title}
+                </h1>
+                <p className="text-2xl text-white/90 mb-6 italic">
+                  {magazineInfo.tagline}
+                </p>
+                <div className="flex flex-wrap gap-6 justify-center lg:justify-start text-sm mb-8">
+                  <div>{magazineInfo.frequency}</div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-[#8a48e7] transition-all duration-300"
+                  >
+                    Visit Website
+                    <ExternalLink className="w-5 h-5" />
+                  </motion.button>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        {/* About Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+              About Annahda
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full"></div>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              <strong>Annahda</strong> is our flagship quarterly publication that serves as a window into the vibrant world of entrepreneurship, innovation, and community excellence. Each issue is carefully crafted to inspire, inform, and celebrate the remarkable achievements of our members and the broader business ecosystem.
+            </p>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              With a perfect blend of insightful articles, success stories, market analysis, and community updates, Annahda has become an essential resource for professionals, entrepreneurs, and business enthusiasts. Our magazine bridges the gap between aspiration and achievement, providing readers with actionable insights and inspiring narratives that drive growth and success.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Features Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+              What's Inside
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full"></div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ y: -5 }}
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#8a48e7] to-[#5c21d2] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <feature.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#8a48e7] transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
