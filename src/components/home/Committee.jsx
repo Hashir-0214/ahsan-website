@@ -35,10 +35,10 @@ export default function HomeCommittee() {
       className="mb-36 max-w-7xl mx-auto px-6"
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
           Our Committee
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-4"></div>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-4"></div>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Meet the leadership team guiding our mission forward
         </p>
@@ -68,10 +68,10 @@ export default function HomeCommittee() {
 
                 {/* Social Icons (appear on hover) */}
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-[#8a48e7] hover:text-white transition-colors shadow-lg">
+                  <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-[#16a741] hover:text-white transition-colors shadow-lg">
                     <Mail className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-[#8a48e7] hover:text-white transition-colors shadow-lg">
+                  <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-[#16a741] hover:text-white transition-colors shadow-lg">
                     <Linkedin className="w-4 h-4" />
                   </button>
                 </div>
@@ -80,10 +80,10 @@ export default function HomeCommittee() {
               {/* Content */}
               <div className="p-3 text-center relative">
                 <div className="">
-                  <h3 className="text-md uppercase poppins-bold text-gray-800 mb-2 group-hover:text-[#8a48e7] transition-colors">
+                  <h3 className="text-md uppercase poppins-bold text-gray-800 mb-2 group-hover:text-[#16a741] transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-xs poppins-semibold text-[#8a48e7] uppercase tracking-wider">
+                  <p className="text-xs poppins-semibold text-[#16a741] uppercase tracking-wider">
                     {member.position}
                   </p>
                 </div>
@@ -97,7 +97,7 @@ export default function HomeCommittee() {
         <Link href="/committee" passHref>
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="group px-8 py-3 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-full poppins-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
+            className="group px-8 py-3 bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white rounded-full poppins-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
           >
             View Full Committee
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

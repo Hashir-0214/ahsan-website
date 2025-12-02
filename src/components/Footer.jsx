@@ -52,8 +52,8 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#8a48e7]/20 to-[#5c21d2]/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#5c21d2]/20 to-[#8a48e7]/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#16a741]/20 to-[#1FA447]/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#1FA447]/20 to-[#16a741]/20 rounded-full blur-3xl"></div>
 
       <div className="relative w-full max-w-7xl mx-auto px-6 pt-16 pb-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
@@ -69,7 +69,7 @@ export default function Footer() {
                   className="relative w-12 h-auto rounded-xl object-contain"
                 />
               </div>
-              <h3 className="text-2xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]">
+              <h3 className="text-2xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447]">
                 AHSAN
               </h3>
             </div>
@@ -82,7 +82,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-white/5 hover:bg-gradient-to-r hover:from-[#8a48e7] hover:to-[#5c21d2] rounded-lg flex items-center justify-center transition-all duration-300 group border border-white/10"
+                  className="w-10 h-10 bg-white/5 hover:bg-gradient-to-r hover:from-[#16a741] hover:to-[#1FA447] rounded-lg flex items-center justify-center transition-all duration-300 group border border-white/10"
                 >
                   <social.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
                 </a>
@@ -93,7 +93,7 @@ export default function Footer() {
           {/* About Section */}
           <div>
             <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
+              <span className="w-8 h-0.5 bg-gradient-to-r from-[#16a741] to-[#1FA447] mr-3"></span>
               About
             </h4>
             <ul className="space-y-3">
@@ -103,7 +103,7 @@ export default function Footer() {
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors poppins-regular duration-300 flex items-center group text-sm"
                   >
-                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#8a48e7]" />
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#16a741]" />
                     {link.label}
                   </Link>
                 </li>
@@ -114,7 +114,7 @@ export default function Footer() {
           {/* Resources Quick Links */}
           <div>
             <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
+              <span className="w-8 h-0.5 bg-gradient-to-r from-[#16a741] to-[#1FA447] mr-3"></span>
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -124,7 +124,7 @@ export default function Footer() {
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors poppins-regular duration-300 flex items-center group text-sm"
                   >
-                    <ArrowRight className="w-3 h-3 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#8a48e7]" />
+                    <ArrowRight className="w-3 h-3 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#16a741]" />
                     {link.label}
                   </Link>
                 </li>
@@ -135,7 +135,7 @@ export default function Footer() {
           {/* Publications Section */}
           <div>
             <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
+              <span className="w-8 h-0.5 bg-gradient-to-r from-[#16a741] to-[#1FA447] mr-3"></span>
               Publications
             </h4>
             <ul className="space-y-3">
@@ -145,7 +145,7 @@ export default function Footer() {
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors poppins-regular duration-300 flex items-center group text-sm"
                   >
-                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#8a48e7]" />
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#16a741]" />
                     {link.label}
                   </Link>
                 </li>
@@ -156,7 +156,7 @@ export default function Footer() {
           {/* Contact Section */}
           <div>
             <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
+              <span className="w-8 h-0.5 bg-gradient-to-r from-[#16a741] to-[#1FA447] mr-3"></span>
               Get in Touch
             </h4>
             <div className="space-y-4 mb-6">
@@ -164,18 +164,18 @@ export default function Footer() {
                 href="mailto:ahsannilambur@gmail.com"
                 className="flex items-start text-gray-400 hover:text-white transition-colors group"
               >
-                <Mail className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] flex-shrink-0" />
+                <Mail className="w-5 h-5 mr-3 mt-0.5 text-[#16a741] flex-shrink-0" />
                 <span className="text-sm poppins-regular">ahsannilambur@gmail.com</span>
               </a>
               <a
                 href="tel:+919876543210"
                 className="flex items-start text-gray-400 hover:text-white transition-colors group"
               >
-                <Phone className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] flex-shrink-0" />
+                <Phone className="w-5 h-5 mr-3 mt-0.5 text-[#16a741] flex-shrink-0" />
                 <span className="text-sm poppins-regular">+91 98765 43210</span>
               </a>
               <div className="flex items-start text-gray-400 poppins-regular">
-                <MapPin className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] flex-shrink-0" />
+                <MapPin className="w-5 h-5 mr-3 mt-0.5 text-[#16a741] flex-shrink-0" />
                 <span className="text-sm">
                   Higher Secondary School
                   <br />
@@ -203,9 +203,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 md:w-64 px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#8a48e7] transition-colors"
+                className="flex-1 md:w-64 px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#16a741] transition-colors"
               />
-              <button className="px-6 py-3 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-lg flex items-center justify-center hover:shadow-lg hover:shadow-[#8a48e7]/50 transition-all duration-300 group font-semibold">
+              <button className="px-6 py-3 bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-lg flex items-center justify-center hover:shadow-lg hover:shadow-[#16a741]/50 transition-all duration-300 group font-semibold">
                 <Send className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform mr-2" />
                 Subscribe
               </button>
@@ -243,7 +243,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]"></div>
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447]"></div>
     </footer>
   );
 }

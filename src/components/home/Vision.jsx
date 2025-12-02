@@ -39,14 +39,14 @@ export default function Vision() {
     >
       <div className="text-center mb-12">
         <div className="inline-block mb-4">
-          <div className="w-16 h-16 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+          <div className="w-16 h-16 bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-2xl flex items-center justify-center mx-auto shadow-lg">
             <Target className="w-8 h-8 text-white" />
           </div>
         </div>
-        <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+        <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
           OUR VISION
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full"></div>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full"></div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -59,9 +59,9 @@ export default function Vision() {
             transition={{ delay: index * 0.1, duration: 0.6 }}
             className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100"
           >
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#8a48e7]/5 to-[#5c21d2]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#16a741]/5 to-[#1FA447]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#8a48e7] to-[#5c21d2] rounded-xl flex items-center justify-center shadow-lg">
+              <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#16a741] to-[#1FA447] rounded-xl flex items-center justify-center shadow-lg">
                 <item.icon className="w-6 h-6 text-white" />
               </div>
               <p className="text-gray-700 leading-relaxed pt-1">{item.text}</p>

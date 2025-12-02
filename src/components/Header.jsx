@@ -56,11 +56,11 @@ export default function Header() {
               alt="Cochin Connect Logo"
               width={48}
               height={48}
-              className="w-full h-auto relative rounded-xl transition-transform group-hover:scale-105"
+              className="w-8 h-auto relative rounded-xl transition-transform group-hover:scale-105"
             />
           </div>
           <div className="hidden sm:block">
-            <div className="text-xl poppins-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]">
+            <div className="text-xl poppins-bold leading-4 text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447]">
               AHSAn <br />
               <span className="text-xs">Al-Hidaya Students' Association</span>
             </div>
@@ -79,18 +79,18 @@ export default function Header() {
               return (
                 <div key={link.label} className="relative group">
                   <button 
-                    className={`flex items-center px-4 py-2 text-sm poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
-                      isParentActive ? "text-[#5c21d2]" : "text-gray-700 hover:text-[#5c21d2]"
+                    className={`flex items-center px-4 py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
+                      isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
                     }`}
                   >
                     {link.label}
-                    <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-300 group-hover:-rotate-180 ${isParentActive ? "text-[#8a48e7]" : "text-[#8a48e7]"}`} />
+                    <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-300 group-hover:-rotate-180 ${isParentActive ? "text-[#16a741]" : "text-[#16a741]"}`} />
                   </button>
 
                   {/* Creative Dropdown Panel */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48 invisible opacity-0 group-hover:visible group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out">
                     <div className="relative bg-white backdrop-blur-2xl rounded-2xl shadow-xl border border-purple-100 overflow-hidden p-2">
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]"></div>
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447]"></div>
 
                       <div className="flex flex-col">
                         {link.subLinks.map((subItem) => {
@@ -101,14 +101,14 @@ export default function Header() {
                                     href={subItem.to}
                                     className={`flex justify-between py-3 px-6 rounded-xl transition-colors group/item ${
                                         isSubActive 
-                                        ? "bg-gradient-to-r from-[#8a48e7]/10 to-[#5c21d2]/10" // Active Background
-                                        : "hover:bg-gradient-to-r hover:from-[#8a48e7]/5 hover:to-[#5c21d2]/5"
+                                        ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10" // Active Background
+                                        : "hover:bg-gradient-to-r hover:from-[#16a741]/5 hover:to-[#1FA447]/5"
                                     }`}
                                 >
-                                    <p className={`text-sm poppins-semibold ${isSubActive ? "text-[#5c21d2]" : "text-gray-800 group-hover/item:text-[#5c21d2]"}`}>
+                                    <p className={`text-sm poppins-semibold ${isSubActive ? "text-[#1FA447]" : "text-gray-800 group-hover/item:text-[#1FA447]"}`}>
                                     {subItem.label}
                                     </p>
-                                    <ExternalLink className={`w-4 h-4 mt-1 ${isSubActive ? "text-[#8a48e7]" : "text-gray-400 group-hover/item:text-[#8a48e7]"}`} />
+                                    <ExternalLink className={`w-4 h-4 mt-1 ${isSubActive ? "text-[#16a741]" : "text-gray-400 group-hover/item:text-[#16a741]"}`} />
                                 </Link>
                             )
                         })}
@@ -127,12 +127,12 @@ export default function Header() {
                 key={link.to}
                 href={link.to}
                 className={`relative px-4 py-2 text-sm poppins-medium rounded-lg transition-all duration-300 group ${
-                    isActive ? "text-[#5c21d2]" : "text-gray-700 hover:text-[#5c21d2]"
+                    isActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
                 }`}
               >
                 <span className="relative z-10">{link.label}</span>
                 {/* Active Background Span */}
-                <span className={`absolute inset-0 bg-gradient-to-r from-[#8a48e7]/10 to-[#5c21d2]/10 rounded-lg transition-opacity ${
+                <span className={`absolute inset-0 bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10 rounded-lg transition-opacity ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                 }`}></span>
               </Link>
@@ -145,7 +145,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden w-10 h-10 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] hover:shadow-lg rounded-full transition-all duration-300 flex items-center justify-center"
+            className="md:hidden w-10 h-10 bg-gradient-to-r from-[#16a741] to-[#1FA447] hover:shadow-lg rounded-full transition-all duration-300 flex items-center justify-center"
           >
             {isMenuOpen ? (
               <X size={20} color="white" />
@@ -174,7 +174,7 @@ export default function Header() {
                     <button
                       onClick={() => toggleMobileSubmenu(index)}
                       className={`w-full flex items-center justify-between px-4 py-3 poppins-medium rounded-lg hover:bg-purple-50 transition-all ${
-                          isParentActive ? "text-[#5c21d2]" : "text-gray-700 hover:text-[#5c21d2]"
+                          isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
                       }`}
                     >
                       {link.label}
@@ -204,8 +204,8 @@ export default function Header() {
                                     onClick={() => setIsMenuOpen(false)}
                                     className={`flex items-center px-4 py-2.5 text-sm rounded-md transition-colors shadow-sm border border-transparent ${
                                         isSubActive 
-                                        ? "text-[#5c21d2] bg-white border-purple-100" 
-                                        : "text-gray-600 hover:text-[#5c21d2] hover:bg-white hover:border-purple-100"
+                                        ? "text-[#1FA447] bg-white border-purple-100" 
+                                        : "text-gray-600 hover:text-[#1FA447] hover:bg-white hover:border-purple-100"
                                     }`}
                                 >
                                     {subItem.label}
@@ -227,8 +227,8 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`px-4 py-3 poppins-medium rounded-lg transition-all duration-300 ${
                       isActive 
-                      ? "bg-gradient-to-r from-[#8a48e7]/10 to-[#5c21d2]/10 text-[#5c21d2]"
-                      : "text-gray-700 hover:bg-gradient-to-r hover:from-[#8a48e7]/10 hover:to-[#5c21d2]/10 hover:text-[#5c21d2]"
+                      ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10 text-[#1FA447]"
+                      : "text-gray-700 hover:bg-gradient-to-r hover:from-[#16a741]/10 hover:to-[#1FA447]/10 hover:text-[#1FA447]"
                   }`}
                   style={{
                     animation: `slideIn 0.3s ease-out ${index * 0.05}s both`,

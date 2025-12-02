@@ -47,10 +47,10 @@ export default function PublicationsPage() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-2xl md:text-5xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6">
+          <h1 className="text-2xl md:text-5xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-6">
             OUR PUBLICATIONS
           </h1>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-6"></div>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-6"></div>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
             Dive into our curated collection of publications that bring you the
             latest insights, expert perspectives, and inspiring stories from the
@@ -85,7 +85,7 @@ export default function PublicationsPage() {
 
                     {/* Category Badge */}
                     <div className="absolute top-6 left-6">
-                      <span className="px-4 py-2 bg-white/95 backdrop-blur-sm text-[#8a48e7] text-sm poppins-bold rounded-full shadow-lg">
+                      <span className="px-4 py-2 bg-white/95 backdrop-blur-sm text-[#16a741] text-sm poppins-bold rounded-full shadow-lg">
                         {publication.category}
                       </span>
                     </div>
@@ -94,7 +94,7 @@ export default function PublicationsPage() {
 
                 {/* Content Section */}
                 <div className="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
-                  <h2 className="text-3xl lg:text-4xl poppins-bold text-gray-800 mb-4 group-hover:text-[#8a48e7] transition-colors">
+                  <h2 className="text-3xl lg:text-4xl poppins-bold text-gray-800 mb-4 group-hover:text-[#16a741] transition-colors">
                     {publication.title}
                   </h2>
 
@@ -107,7 +107,7 @@ export default function PublicationsPage() {
                     <Link href={publication.link}>
                       <motion.button
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl poppins-semibold hover:border-[#8a48e7] hover:text-[#8a48e7] transition-all duration-300"
+                        className="flex items-center gap-2 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl poppins-semibold hover:border-[#16a741] hover:text-[#16a741] transition-all duration-300"
                       >
                         <ExternalLink className="w-5 h-5" />
                         View More

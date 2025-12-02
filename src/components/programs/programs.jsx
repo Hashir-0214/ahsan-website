@@ -154,10 +154,10 @@ export default function ProgramsPage() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6">
+          <h1 className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-6">
             OUR PROGRAMS
           </h1>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-6"></div>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-6"></div>
         </div>
 
         {/* Programs Grid */}

@@ -35,7 +35,7 @@ export default function Programs() {
       className="mb-36 max-w-7xl mx-auto px-6"
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
           Our Programs
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -63,7 +63,7 @@ export default function Programs() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="py-3">
-                <h3 className="text-md poppins-bold text-gray-800 text-center group-hover:text-[#8a48e7] transition-colors">
+                <h3 className="text-md poppins-bold text-gray-800 text-center group-hover:text-[#16a741] transition-colors">
                   {program.title}
                 </h3>
               </div>
@@ -76,7 +76,7 @@ export default function Programs() {
         <Link href="/programs">
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="group px-8 py-3 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-full poppins-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
+            className="group px-8 py-3 bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white rounded-full poppins-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
           >
             See More Programs
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

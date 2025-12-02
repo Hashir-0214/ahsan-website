@@ -95,8 +95,8 @@ export default function Contact() {
                 className="relative w-full pt-32 pb-20 px-6"
             >
                 {/* Decorative Elements */}
-                <div className="absolute top-20 right-10 w-96 h-96 bg-[#8a48e7]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
-                <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#5c21d2]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-20 right-10 w-96 h-96 bg-[#16a741]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+                <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#1FA447]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
 
                 <div className="relative w-full max-w-7xl mx-auto">
                     {/* Header */}
@@ -107,14 +107,14 @@ export default function Contact() {
                         className="text-center mb-16"
                     >
                         <motion.div variants={itemVariants} className="inline-block mb-6">
-                            <span className="px-5 py-2 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-full text-sm poppins-semibold shadow-lg">
+                            <span className="px-5 py-2 bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white rounded-full text-sm poppins-semibold shadow-lg">
                                 Get In Touch
                             </span>
                         </motion.div>
 
                         <motion.h1
                             variants={itemVariants}
-                            className="text-4xl md:text-6xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6"
+                            className="text-4xl md:text-6xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-6"
                         >
                             Let's Connect
                         </motion.h1>
@@ -143,18 +143,18 @@ export default function Contact() {
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100 overflow-hidden text-center"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#8a48e7]/5 to-[#5c21d2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#16a741]/5 to-[#1FA447]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 
                                 <div className="relative">
-                                    <div className="w-16 h-16 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <div className="w-16 h-16 bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                                         <info.icon className="w-8 h-8 text-white" />
                                     </div>
                                     <h3 className="text-xl poppins-bold text-gray-800 mb-2">{info.title}</h3>
-                                    <p className="text-lg text-[#5c21d2] poppins-semibold mb-1">{info.details}</p>
+                                    <p className="text-lg text-[#1FA447] poppins-semibold mb-1">{info.details}</p>
                                     <p className="text-sm text-gray-600">{info.subtext}</p>
                                 </div>
 
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#8a48e7]/10 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#16a741]/10 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
                             </motion.a>
                         ))}
                     </motion.div>
@@ -171,7 +171,7 @@ export default function Contact() {
                         >
                             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-purple-100">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-xl flex items-center justify-center">
                                         <MessageSquare className="w-6 h-6 text-white" />
                                     </div>
                                     <h2 className="text-2xl poppins-bold text-gray-800">Send us a Message</h2>
@@ -201,7 +201,7 @@ export default function Contact() {
                                                     name="name"
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#8a48e7] focus:ring-2 focus:ring-[#8a48e7]/20 transition-all"
+                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16a741] focus:ring-2 focus:ring-[#16a741]/20 transition-all"
                                                     placeholder="John Doe"
                                                 />
                                             </div>
@@ -218,7 +218,7 @@ export default function Contact() {
                                                     name="email"
                                                     value={formData.email}
                                                     onChange={handleChange}
-                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#8a48e7] focus:ring-2 focus:ring-[#8a48e7]/20 transition-all"
+                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16a741] focus:ring-2 focus:ring-[#16a741]/20 transition-all"
                                                     placeholder="john@example.com"
                                                 />
                                             </div>
@@ -237,7 +237,7 @@ export default function Contact() {
                                                     name="phone"
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#8a48e7] focus:ring-2 focus:ring-[#8a48e7]/20 transition-all"
+                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16a741] focus:ring-2 focus:ring-[#16a741]/20 transition-all"
                                                     placeholder="+91 99999 99999"
                                                 />
                                             </div>
@@ -254,7 +254,7 @@ export default function Contact() {
                                                     name="company"
                                                     value={formData.company}
                                                     onChange={handleChange}
-                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#8a48e7] focus:ring-2 focus:ring-[#8a48e7]/20 transition-all"
+                                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16a741] focus:ring-2 focus:ring-[#16a741]/20 transition-all"
                                                     placeholder="Your Company"
                                                 />
                                             </div>
@@ -270,7 +270,7 @@ export default function Contact() {
                                             value={formData.message}
                                             onChange={handleChange}
                                             rows="6"
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#8a48e7] focus:ring-2 focus:ring-[#8a48e7]/20 transition-all resize-none"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-[#16a741] focus:ring-2 focus:ring-[#16a741]/20 transition-all resize-none"
                                             placeholder="Tell us how we can help you..."
                                         ></textarea>
                                     </div>
@@ -279,7 +279,7 @@ export default function Contact() {
                                         onClick={handleSubmit}
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full py-4 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-xl poppins-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group"
+                                        className="w-full py-4 bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white rounded-xl poppins-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group"
                                     >
                                         Send Message
                                         <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -299,7 +299,7 @@ export default function Contact() {
                             {/* Office Hours */}
                             <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-10 h-10 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-lg flex items-center justify-center">
+                                    <div className="w-10 h-10 bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-lg flex items-center justify-center">
                                         <Clock className="w-5 h-5 text-white" />
                                     </div>
                                     <h3 className="text-lg poppins-bold text-gray-800">Office Hours</h3>
@@ -315,7 +315,7 @@ export default function Contact() {
                             </div>
 
                             {/* Quick Info */}
-                            <div className="bg-gradient-to-br from-[#8a48e7] to-[#5c21d2] rounded-2xl p-6 shadow-lg text-white">
+                            <div className="bg-gradient-to-br from-[#16a741] to-[#1FA447] rounded-2xl p-6 shadow-lg text-white">
                                 <Sparkles className="w-10 h-10 mb-4" />
                                 <h3 className="text-xl poppins-bold mb-3">Need Immediate Help?</h3>
                                 <p className="text-white/90 mb-4 text-sm leading-relaxed">
@@ -323,7 +323,7 @@ export default function Contact() {
                                 </p>
                                 <a
                                     href="tel:+919999999999"
-                                    className="inline-flex items-center gap-2 bg-white text-[#5c21d2] px-5 py-2 rounded-lg poppins-semibold hover:shadow-lg transition-all text-sm"
+                                    className="inline-flex items-center gap-2 bg-white text-[#1FA447] px-5 py-2 rounded-lg poppins-semibold hover:shadow-lg transition-all text-sm"
                                 >
                                     <Phone className="w-4 h-4" />
                                     Call Now
@@ -332,9 +332,9 @@ export default function Contact() {
 
                             {/* Map Placeholder */}
                             <div className="bg-white rounded-2xl p-4 shadow-lg border border-purple-100">
-                                <div className="aspect-square bg-gradient-to-br from-[#8a48e7]/10 to-[#5c21d2]/10 rounded-xl flex items-center justify-center">
+                                <div className="aspect-square bg-gradient-to-br from-[#16a741]/10 to-[#1FA447]/10 rounded-xl flex items-center justify-center">
                                     <div className="text-center">
-                                        <MapPin className="w-12 h-12 text-[#5c21d2] mx-auto mb-2" />
+                                        <MapPin className="w-12 h-12 text-[#1FA447] mx-auto mb-2" />
                                         <p className="text-sm poppins-semibold text-gray-700">Kochi, Kerala</p>
                                         <p className="text-xs text-gray-600">India</p>
                                     </div>

@@ -39,9 +39,9 @@ export default function Hero() {
       className="relative w-full pt-60 pb-20 px-6"
     >
       {/* Background Blobs */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-[#8a48e7]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+      <div className="absolute top-20 right-10 w-72 h-72 bg-[#16a741]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
       <div
-        className="absolute bottom-20 left-10 w-72 h-72 bg-[#5c21d2]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"
+        className="absolute bottom-20 left-10 w-72 h-72 bg-[#1FA447]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"
         style={{ animationDelay: "1s" }}
       ></div>
 
@@ -59,18 +59,18 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
               className="inline-block mb-6"
             >
-              <span className="px-5 py-2 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-full text-sm poppins-semibold shadow-lg select-none pointer-events-none">
+              <span className="px-5 py-2 bg-gradient-to-r from-[#1FA447] to-[#16a741] text-white rounded-full text-sm poppins-semibold shadow-lg select-none pointer-events-none">
                 Welcome to AHSAn
               </span>
             </motion.div>
 
-            <h2 className="text-3xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1FA447] to-[#1FA447] mb-6 leading-tight">
               AHSAn is a platform where students learn, lead, and shine.
             </h2>
 
             <div className="space-y-5 text-gray-700 text-md leading-relaxed">
-              <p className="relative pl-6 border-l-4 border-[#8a48e7]">
-                <strong className="text-[#5c21d2]">
+              <p className="relative pl-6 border-l-4 border-[#16a741]">
+                <strong className="text-[#1FA447]">
                   Al-Hidaya Students Association (AHSAn)
                 </strong>
                 , the Students’ Union of Sabeelul Hidaya Islamic College, is
@@ -95,14 +95,14 @@ export default function Hero() {
                   priority
                 />
                 <div className="text-center">
-                  <h1 className="text-5xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-2">
+                  <h1 className="text-5xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2">
                     AHSAn
                   </h1>
                   <p className="text-xl text-gray-600 poppins-medium">
-                    <strong className="text-[#5c21d2]">A</strong>l  
-                    <strong className="text-[#5c21d2]"> H</strong>idaya 
-                    <strong className="text-[#5c21d2]"> S</strong>tudents 
-                    <strong className="text-[#5c21d2]"> A</strong>ssociatio<strong className="text-[#5c21d2]">n</strong>
+                    <strong className="text-[#1FA447]">A</strong>l  
+                    <strong className="text-[#1FA447]"> H</strong>idaya 
+                    <strong className="text-[#1FA447]"> S</strong>tudents 
+                    <strong className="text-[#1FA447]"> A</strong>ssociatio<strong className="text-[#1FA447]">n</strong>
                   </p>
                 </div>
               </div>
