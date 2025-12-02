@@ -10,7 +10,7 @@ export default function PublicationsPage() {
   const publications = [
     {
       image:
-        "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=500&fit=crop",
+        "/assets/publishings/annahda.png",
       title: "Annahda",
       description:
         "Annahda, our flagship Arabic publication, delivers two decades of academic and literary excellence, published bimonthly to nurture language skill, culture, and scholarship.",
@@ -19,7 +19,7 @@ export default function PublicationsPage() {
     },
     {
       image:
-        "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
+        "/assets/publishings/turuq.png",
       title: "TURUQ",
       description:
         "Turuq is a dynamic web magazine featuring creative, analytical, and contemporary student writings, showcasing fresh perspectives and shaping thoughtful digital literary engagement.",
@@ -28,7 +28,7 @@ export default function PublicationsPage() {
     },
     {
       image:
-        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=500&fit=crop",
+        "/assets/publishings/chromadiaries.png",
       title: "Chromadiaries",
       description:
         "Chromadiaries is an online English magazine for students under eighteen, encouraging creativity, expression, reading habits, and vibrant youth-driven storytelling across diverse themes.",

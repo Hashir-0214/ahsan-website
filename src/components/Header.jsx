@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { usePathname } from "next/navigation"; // 1. Import usePathname
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +32,10 @@ export default function Header() {
         {
           to: "/publications/annahda",
           label: "Annahda",
+        },
+        {
+          to: "/publications/chromadiaries",
+          label: "Chromadiaries",
         },
       ],
     },

@@ -2,14 +2,28 @@
 
 "use client";
 
-import { BookOpen, Calendar, Download, Eye, Share2, Award, Users, TrendingUp, Sparkles, ChevronRight, ExternalLink } from "lucide-react";
+import {
+  BookOpen,
+  Calendar,
+  Download,
+  Eye,
+  Share2,
+  Award,
+  Users,
+  TrendingUp,
+  Sparkles,
+  ChevronRight,
+  ExternalLink,
+} from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function AnnahdaPage() {
   const magazineInfo = {
     title: "Annahda",
-    tagline: "Inspiring Growth, Celebrating Success",
-    coverImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=1000&fit=crop",
+    tagline: "نبض الواقع والابداع",
+    coverImage: "/assets/publishings/annahda.png",
     category: "Magazine",
     frequency: "Bi-Monthly",
   };
@@ -18,22 +32,26 @@ export default function AnnahdaPage() {
     {
       icon: Award,
       title: "Excellence Spotlights",
-      description: "In-depth profiles of outstanding members and their remarkable achievements in business and innovation.",
+      description:
+        "In-depth profiles of outstanding members and their remarkable achievements in business and innovation.",
     },
     {
       icon: TrendingUp,
       title: "Market Insights",
-      description: "Comprehensive analysis of industry trends, market dynamics, and economic forecasts from expert contributors.",
+      description:
+        "Comprehensive analysis of industry trends, market dynamics, and economic forecasts from expert contributors.",
     },
     {
       icon: Users,
       title: "Community Stories",
-      description: "Heartwarming narratives of collaboration, mentorship, and the positive impact of our community initiatives.",
+      description:
+        "Heartwarming narratives of collaboration, mentorship, and the positive impact of our community initiatives.",
     },
     {
       icon: Sparkles,
       title: "Innovation Corner",
-      description: "Showcasing cutting-edge projects, startup success stories, and breakthrough ideas from our ecosystem.",
+      description:
+        "Showcasing cutting-edge projects, startup success stories, and breakthrough ideas from our ecosystem.",
     },
   ];
 
@@ -42,9 +60,15 @@ export default function AnnahdaPage() {
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+            }}
+          ></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -59,9 +83,11 @@ export default function AnnahdaPage() {
                 className="relative group"
               >
                 <div className="absolute -inset-4 bg-white/20 backdrop-blur-sm rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
-                <img
+                <Image
                   src={magazineInfo.coverImage}
                   alt={magazineInfo.title}
+                  width={800}
+                  height={1000}
                   className="relative z-10 w-full max-w-md mx-auto rounded-2xl shadow-2xl"
                 />
               </motion.div>
@@ -91,13 +117,15 @@ export default function AnnahdaPage() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  <motion.button
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-xl poppins-bold hover:bg-white hover:text-[#16a741] transition-all duration-300"
-                  >
-                    Visit Website
-                    <ExternalLink className="w-5 h-5" />
-                  </motion.button>
+                  <Link href="https://annahda.in" target="_blank">
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-xl poppins-bold hover:bg-white hover:text-[#16a741] transition-all duration-300"
+                    >
+                      Visit Website
+                      <ExternalLink className="w-5 h-5" />
+                    </motion.button>
+                  </Link>
                 </div>
               </motion.div>
             </div>
@@ -122,54 +150,24 @@ export default function AnnahdaPage() {
           </div>
           <div className="max-w-4xl mx-auto">
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              <strong>Annahda Arabic Magazine</strong> , the flagship Arabic publication of Sabeelul Hidaya Islamic College, has proudly completed two decades of meaningful academic and literary contribution. Over the years, it has evolved into a trusted platform that preserves, celebrates, and promotes Arabic language, culture, and intellectual tradition within the campus. Its bimonthly issues feature scholarly articles, literary works, reflections, and student writings that reflect both linguistic beauty and academic depth.
+              <strong>Annahda Arabic Magazine</strong> , the flagship Arabic
+              publication of Sabeelul Hidaya Islamic College, has proudly
+              completed two decades of meaningful academic and literary
+              contribution. Over the years, it has evolved into a trusted
+              platform that preserves, celebrates, and promotes Arabic language,
+              culture, and intellectual tradition within the campus. Its
+              bimonthly issues feature scholarly articles, literary works,
+              reflections, and student writings that reflect both linguistic
+              beauty and academic depth.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              As a magazine born from the passion of aspiring Arabic scholars, Annahda plays an integral role in nurturing expression, creativity, and critical thinking among students. It continues to inspire a culture of reading, writing, and intellectual dialogue, making it one of the most respected and enduring student-led Arabic publications in the region.
+              As a magazine born from the passion of aspiring Arabic scholars,
+              Annahda plays an integral role in nurturing expression,
+              creativity, and critical thinking among students. It continues to
+              inspire a culture of reading, writing, and intellectual dialogue,
+              making it one of the most respected and enduring student-led
+              Arabic publications in the region.
             </p>
-          </div>
-        </motion.div>
-
-        {/* Features Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-20"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
-              What's Inside
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full"></div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -5 }}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-100"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#16a741] to-[#1FA447] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <feature.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl poppins-bold text-gray-800 mb-2 group-hover:text-[#16a741] transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </motion.div>
       </div>
