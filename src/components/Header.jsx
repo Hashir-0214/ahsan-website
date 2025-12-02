@@ -20,6 +20,7 @@ export default function Header() {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "/programs", label: "Programs" },
     {
       label: "Publications",
       to: "/publications",
@@ -34,9 +35,8 @@ export default function Header() {
         },
       ],
     },
-    { to: "/programs", label: "Programs" },
-    { to: "/events", label: "Events & Calender" },
     { to: "/committee", label: "Committee" },
+    { to: "/events", label: "Events & Calender" },
     { to: "/contact", label: "Contact" },
   ];
 

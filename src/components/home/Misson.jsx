@@ -68,23 +68,6 @@ export default function Mission() {
           </motion.div>
         ))}
       </div>
-
-      {/* Optional: Add a centered mission statement */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.6, duration: 0.8 }}
-        className="mt-12 max-w-4xl mx-auto"
-      >
-        <div className="bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-2xl p-8 shadow-xl text-center">
-          <p className="text-white text-lg poppins-semibold leading-relaxed">
-            We are committed to creating lasting impact by bridging
-            opportunities, nurturing talent, and building a sustainable future
-            for businesses and professionals in our community.
-          </p>
-        </div>
-      </motion.div>
     </motion.div>
   );
 }

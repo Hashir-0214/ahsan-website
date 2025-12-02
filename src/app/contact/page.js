@@ -12,7 +12,8 @@ import {
     Building,
     User,
     Sparkles,
-    CheckCircle
+    CheckCircle,
+    Locate
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -60,22 +61,22 @@ export default function Contact() {
         {
             icon: Mail,
             title: "Email Us",
-            details: "info@cochinconnect.in",
-            subtext: "We'll respond within 24 hours",
-            link: "mailto:info@cochinconnect.in"
+            details: "ahsansabeel@gmail.com",
+            subtext: "",
+            link: "mailto:ahsansabeel@gmail.com"
         },
         {
             icon: Phone,
             title: "Call Us",
-            details: "+91 99466 89000",
-            subtext: "Mon - Fri, 9 AM - 6 PM IST",
-            link: "tel:+919946689000"
+            details: "+91 8086392526",
+            subtext: "",
+            link: "tel:+918086392526"
         },
         {
             icon: MapPin,
             title: "Visit Us",
-            details: "Cheranelloor, Ernakulam",
-            subtext: "Operation Office, Kochi",
+            details: "Parappur, kottakkal",
+            subtext: "Sabeelul Hidaya Islamic College",
             link: "#"
         }
     ];
@@ -87,12 +88,12 @@ export default function Contact() {
     ];
 
     return (
-        <div className="w-full bg-gradient-to-br from-purple-50 via-white to-violet-50 overflow-hidden">
+        <div className="w-full bg-gradient-to-br from-purple-50 via-white to-violet-50 overflow-hidden pt-32">
             <motion.section
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className="relative w-full pt-32 pb-20 px-6"
+                className="relative w-full pb-20 px-6"
             >
                 {/* Decorative Elements */}
                 <div className="absolute top-20 right-10 w-96 h-96 bg-[#16a741]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
@@ -114,14 +115,14 @@ export default function Contact() {
 
                         <motion.h1
                             variants={itemVariants}
-                            className="text-4xl md:text-6xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-6"
+                            className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2"
                         >
                             Let's Connect
                         </motion.h1>
 
                         <motion.p
                             variants={itemVariants}
-                            className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+                            className="text-[14px] lg:text-[16px] text-gray-700 max-w-3xl mx-auto poppins-regular leading-relaxed"
                         >
                             Have questions? We're here to help you grow your business network
                         </motion.p>
@@ -133,14 +134,13 @@ export default function Contact() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="grid md:grid-cols-3 gap-6 mb-16"
+                        className="grid grid-cols-3 gap-6 mb-16"
                     >
                         {contactInfo.map((info, index) => (
                             <motion.a
                                 key={index}
                                 href={info.link}
                                 variants={itemVariants}
-                                whileHover={{ y: -8, scale: 1.02 }}
                                 className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100 overflow-hidden text-center"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#16a741]/5 to-[#1FA447]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -160,7 +160,7 @@ export default function Contact() {
                     </motion.div>
 
                     {/* Main Content Grid */}
-                    <div className="grid lg:grid-cols-3 gap-8">
+                    <div className="grid lg:grid-cols-2 gap-8">
                         {/* Contact Form */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
@@ -245,10 +245,10 @@ export default function Contact() {
 
                                         <div>
                                             <label className="block text-sm poppins-semibold text-gray-700 mb-2">
-                                                Company Name
+                                                Address
                                             </label>
                                             <div className="relative">
-                                                <Building className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                                <Locate className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                                 <input
                                                     type="text"
                                                     name="company"
@@ -277,7 +277,6 @@ export default function Contact() {
 
                                     <motion.button
                                         onClick={handleSubmit}
-                                        whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         className="w-full py-4 bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white rounded-xl poppins-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group"
                                     >
@@ -288,59 +287,7 @@ export default function Contact() {
                             </div>
                         </motion.div>
 
-                        {/* Sidebar Info */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="space-y-6"
-                        >
-                            {/* Office Hours */}
-                            <div className="bg-white rounded-2xl p-6 shadow-lg border border-purple-100">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="w-10 h-10 bg-gradient-to-r from-[#16a741] to-[#1FA447] rounded-lg flex items-center justify-center">
-                                        <Clock className="w-5 h-5 text-white" />
-                                    </div>
-                                    <h3 className="text-lg poppins-bold text-gray-800">Office Hours</h3>
-                                </div>
-                                <div className="space-y-3">
-                                    {officeHours.map((schedule, index) => (
-                                        <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-                                            <span className="text-sm poppins-medium text-gray-700">{schedule.day}</span>
-                                            <span className="text-sm text-gray-600">{schedule.hours}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Quick Info */}
-                            <div className="bg-gradient-to-br from-[#16a741] to-[#1FA447] rounded-2xl p-6 shadow-lg text-white">
-                                <Sparkles className="w-10 h-10 mb-4" />
-                                <h3 className="text-xl poppins-bold mb-3">Need Immediate Help?</h3>
-                                <p className="text-white/90 mb-4 text-sm leading-relaxed">
-                                    Our team is ready to assist you with any questions about joining Cochin Connect or our services.
-                                </p>
-                                <a
-                                    href="tel:+919999999999"
-                                    className="inline-flex items-center gap-2 bg-white text-[#1FA447] px-5 py-2 rounded-lg poppins-semibold hover:shadow-lg transition-all text-sm"
-                                >
-                                    <Phone className="w-4 h-4" />
-                                    Call Now
-                                </a>
-                            </div>
-
-                            {/* Map Placeholder */}
-                            <div className="bg-white rounded-2xl p-4 shadow-lg border border-purple-100">
-                                <div className="aspect-square bg-gradient-to-br from-[#16a741]/10 to-[#1FA447]/10 rounded-xl flex items-center justify-center">
-                                    <div className="text-center">
-                                        <MapPin className="w-12 h-12 text-[#1FA447] mx-auto mb-2" />
-                                        <p className="text-sm poppins-semibold text-gray-700">Kochi, Kerala</p>
-                                        <p className="text-xs text-gray-600">India</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
+                        
                     </div>
                 </div>
             </motion.section>
