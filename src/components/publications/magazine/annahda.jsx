@@ -11,10 +11,6 @@ export default function AnnahdaPage() {
     tagline: "Inspiring Growth, Celebrating Success",
     coverImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=1000&fit=crop",
     category: "Magazine",
-    issue: "Vol. 5, Issue 12",
-    date: "December 2024",
-    pages: "48 pages",
-    language: "English & Malayalam",
     frequency: "Bi-Monthly",
   };
 
@@ -126,10 +122,10 @@ export default function AnnahdaPage() {
           </div>
           <div className="max-w-4xl mx-auto">
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              <strong>Annahda</strong> is our flagship quarterly publication that serves as a window into the vibrant world of entrepreneurship, innovation, and community excellence. Each issue is carefully crafted to inspire, inform, and celebrate the remarkable achievements of our members and the broader business ecosystem.
+              <strong>Annahda Arabic Magazine</strong> , the flagship Arabic publication of Sabeelul Hidaya Islamic College, has proudly completed two decades of meaningful academic and literary contribution. Over the years, it has evolved into a trusted platform that preserves, celebrates, and promotes Arabic language, culture, and intellectual tradition within the campus. Its bimonthly issues feature scholarly articles, literary works, reflections, and student writings that reflect both linguistic beauty and academic depth.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              With a perfect blend of insightful articles, success stories, market analysis, and community updates, Annahda has become an essential resource for professionals, entrepreneurs, and business enthusiasts. Our magazine bridges the gap between aspiration and achievement, providing readers with actionable insights and inspiring narratives that drive growth and success.
+              As a magazine born from the passion of aspiring Arabic scholars, Annahda plays an integral role in nurturing expression, creativity, and critical thinking among students. It continues to inspire a culture of reading, writing, and intellectual dialogue, making it one of the most respected and enduring student-led Arabic publications in the region.
             </p>
           </div>
         </motion.div>

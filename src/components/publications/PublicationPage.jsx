@@ -13,7 +13,7 @@ export default function PublicationsPage() {
         "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=500&fit=crop",
       title: "Annahda",
       description:
-        "Our flagship magazine featuring comprehensive coverage of industry trends, member achievements, and organizational milestones. A quarterly publication that showcases the best of our community's innovation and success stories.",
+        "Annahda, our flagship Arabic publication, delivers two decades of academic and literary excellence, published bimonthly to nurture language skill, culture, and scholarship.",
       category: "Magazine",
       link: "/publications/annahda/",
     },
@@ -22,7 +22,7 @@ export default function PublicationsPage() {
         "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
       title: "TURUQ",
       description:
-        "A digital-first publication dedicated to entrepreneurship and business development. TURUQ provides aspiring entrepreneurs with actionable insights, startup strategies, funding opportunities, and expert guidance for navigating the business landscape.",
+        "Turuq is a dynamic web magazine featuring creative, analytical, and contemporary student writings, showcasing fresh perspectives and shaping thoughtful digital literary engagement.",
       category: "Webzine",
         link: "/publications/turuq/",
     },
@@ -31,7 +31,7 @@ export default function PublicationsPage() {
         "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=500&fit=crop",
       title: "Chromadiaries",
       description:
-        "An innovative web magazine that celebrates creativity, design thinking, and technological innovation. Features in-depth interviews with industry leaders, case studies, and emerging trends that shape the future of business and technology.",
+        "Chromadiaries is an online English magazine for students under eighteen, encouraging creativity, expression, reading habits, and vibrant youth-driven storytelling across diverse themes.",
       category: "Web Magazine",
         link: "/publications/chromadiaries/",
     },

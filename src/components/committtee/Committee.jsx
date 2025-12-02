@@ -295,37 +295,28 @@ export default function Committee() {
   return (
     <div className="mb-36 max-w-5xl mx-auto px-6 pt-36">
       {/* Core Committee Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+      <div
         className="mb-24"
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+          <h2 className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-2 md:mb-4">
             CORE COMMITTEE
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto poppins-regular">
+          <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-1 md:mb-4"></div>
+          <p className="text-[13px] md:text-lg text-gray-600 max-w-2xl mx-auto poppins-regular">
             Leadership team driving our vision forward
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
           {coreCommittee.map((member, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10, rotateY: 5 }}
               className="group relative"
             >
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100">
                 {/* Image Container */}
-                <div className="relative h-60 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                <div className="relative h-28 md:h-60 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -349,19 +340,19 @@ export default function Committee() {
                 {/* Content */}
                 <div className="p-3 text-center relative">
                   <div className="">
-                    <h3 className="text-md poppins-bold text-gray-800 group-hover:text-[#8a48e7] transition-colors">
+                    <h3 className="text-[12px] line-clamp-1 uppercase md:text-md poppins-bold text-gray-800 group-hover:text-[#8a48e7] transition-colors">
                       {member.name}
                     </h3>
-                    <p className="text-xs poppins-semibold text-[#8a48e7] uppercase tracking-wider">
+                    <p className=" text-[10px] line-clamp-1 md:text-xs poppins-semibold text-[#8a48e7] uppercase tracking-wider">
                       {member.position}
                     </p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Working Committee Section */}
       <motion.div
@@ -371,21 +362,16 @@ export default function Committee() {
         transition={{ duration: 0.8 }}
       >
         <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-[#5c21d2] to-[#8a48e7] rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-              <Users className="w-8 h-8 text-white" />
-            </div>
-          </div>
-          <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5c21d2] to-[#8a48e7] mb-4">
+          <h2 className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5c21d2] to-[#8a48e7] mb-2 md:mb-4">
             WORKING COMMITTEE
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#5c21d2] to-[#8a48e7] mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 poppins-regular max-w-2xl mx-auto">
+          <div className="w-24 h-0.5 md:h-1 bg-gradient-to-r from-[#5c21d2] to-[#8a48e7] mx-auto rounded-full mb-1 md:mb-4"></div>
+          <p className="text-gray-600 text-[13px] md:text-lg poppins-regular max-w-2xl mx-auto">
             Dedicated teams working together to achieve excellence
           </p>
         </div>
 
-        <div className="space-y-16 max-w-6xl mx-auto">
+        <div className="space-y-8 max-w-6xl mx-auto">
           {workingCommittee.map((group, groupIndex) => (
             <div key={groupIndex} className="relative">
               {/* NEW: Group Role Header */}
@@ -394,13 +380,13 @@ export default function Committee() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="flex w-fit mx-auto items-center justify-center mb-8"
+                className="flex w-fit mx-auto items-center justify-center mb-4 md:mb-8"
               >
-                <div className="h-[1px] w-12 bg-gray-300 mr-4"></div>
-                <h3 className="text-xl bg-[#5c21d2] px-2 rounded poppins-bold text-white uppercase tracking-wide">
+                <div className="h-[1px] w-12 bg-gray-300 mr-2 md:mr-4"></div>
+                <h3 className="text-xs md:text-xl bg-[#5c21d2] px-2 rounded poppins-bold text-white uppercase tracking-wide">
                   {group.role}
                 </h3>
-                <div className="h-[1px] w-12 bg-gray-300 ml-4"></div>
+                <div className="h-[1px] w-12 bg-gray-300 ml-2 md:ml-4"></div>
               </motion.div>
 
               <motion.div

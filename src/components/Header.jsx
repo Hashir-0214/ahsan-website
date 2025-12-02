@@ -60,8 +60,9 @@ export default function Header() {
             />
           </div>
           <div className="hidden sm:block">
-            <div className="text-xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]">
-              AHSAn
+            <div className="text-xl poppins-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]">
+              AHSAn <br />
+              <span className="text-xs">Al-Hidaya Students' Association</span>
             </div>
           </div>
         </Link>

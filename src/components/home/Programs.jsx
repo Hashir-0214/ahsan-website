@@ -39,7 +39,7 @@ export default function Programs() {
           Our Programs
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Discover programs designed to elevate your career and business
+          Discover programs designed to elevate our career
         </p>
       </div>
 

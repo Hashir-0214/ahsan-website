@@ -11,7 +11,7 @@ export default function Publications() {
         "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&h=400&fit=crop",
       title: "Annahda",
       description:
-        "Comprehensive analysis of market trends, member achievements, and organizational growth throughout the year.",
+        "Annahda, our flagship Arabic publication, delivers two decades of academic and literary excellence, published bimonthly to nurture language skill, culture, and scholarship.",
       category: "Magazine",
     },
     {
@@ -19,7 +19,7 @@ export default function Publications() {
         "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop",
       title: "TURUQ",
       description:
-        "A complete handbook for aspiring entrepreneurs with insights on startup strategies, funding, and business planning.",
+        "Turuq is a dynamic web magazine featuring creative, analytical, and contemporary student writings, showcasing fresh perspectives and shaping thoughtful digital literary engagement.",
       category: "Webzine",
     },
     {
@@ -27,7 +27,7 @@ export default function Publications() {
         "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
       title: "Chromadiaries",
       description:
-        "Quarterly publication featuring expert interviews, success stories, and emerging trends in business and technology.",
+        "Chromadiaries is an online English magazine for students under eighteen, encouraging creativity, expression, reading habits, and vibrant youth-driven storytelling across diverse themes.",
       category: "Web Magazine",
     },
   ];
@@ -51,8 +51,7 @@ export default function Publications() {
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-4"></div>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Explore our latest publications featuring insights, reports, and
-          resources for the business community
+          Discover our student-led publications featuring inspiring ideas, thoughtful writings, and diverse expressions across languages and disciplines.
         </p>
       </div>
 
@@ -87,7 +86,7 @@ export default function Publications() {
                 {publication.title}
               </h3>
 
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed mb-6">
                 {publication.description}
               </p>
             </div>

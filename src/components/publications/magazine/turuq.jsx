@@ -201,58 +201,13 @@ export default function TuruqPage() {
           </div>
           <div className="max-w-4xl mx-auto">
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              <strong>TURUQ</strong> - meaning "pathways" or "routes" - is our pioneering Malayalam webzine dedicated to entrepreneurship, business innovation, and startup culture. As a digital-first publication, TURUQ breaks language barriers by providing comprehensive business insights and guidance in Malayalam, making entrepreneurial knowledge accessible to the native-speaking community.
+              <strong>TURUQ</strong> Web Magazine is the dynamic digital publication wing of AHSAn, created to highlight contemporary ideas, campus reflections, and student-led perspectives. Designed as an accessible online platform, it captures the evolving academic, cultural, and social pulse of the college community. Turuq showcases articles, essays, creative pieces, reviews, and multimedia contributions, giving students a global-friendly space to express their thoughts.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Every monthly edition features success stories, expert interviews, market trends, funding opportunities, and practical guides - all crafted to empower aspiring and established entrepreneurs in their business journey.
+              As a modern web-based magazine, Turuq encourages creative freedom and embraces the flexibility of digital media. It promotes fast, relevant, and engaging content that connects students across committees and interests. Turuq continues to grow as a hub of innovation, discourse, and youthful expression, empowering students to engage with ideas and present them to a wider audience.
             </p>
           </div>
         </motion.div>
-
-        {/* Features Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-20"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 mb-2">
-              What's Inside
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto rounded-full"></div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -5 }}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <feature.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-lg poppins-semibold text-blue-600 mb-2">
-                      {feature.titleEng}
-                    </p>
-                    <p className="text-gray-500 text-sm italic">
-                      {feature.descriptionEng}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        
       </div>
     </div>
   );
