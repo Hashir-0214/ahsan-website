@@ -26,13 +26,14 @@ export default function Header() {
       to: "/publications",
       subLinks: [
         {
-          to: "/publications/turuq",
-          label: "TURUQ",
-        },
-        {
           to: "/publications/annahda",
           label: "Annahda",
         },
+        {
+          to: "/publications/turuq",
+          label: "TURUQ",
+        },
+        
         {
           to: "/publications/chromadiaries",
           label: "Chromadiaries",
