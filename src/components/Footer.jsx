@@ -51,7 +51,7 @@ export default function Footer() {
               <div className="relative">
                 {/* Fixed: Swapped img for Image */}
                 <Image
-                  src="/logo.png"
+                  src="/assets/logo.png"
                   alt="Cochin Connect"
                   width={48}
                   height={48}

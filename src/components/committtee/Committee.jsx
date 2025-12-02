@@ -55,82 +55,96 @@ export default function Committee() {
   const workingCommittee = [
     [
       {
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
         name: "Anna Peterson",
         position: "Marketing Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop",
         name: "Chris Evans",
         position: "Marketing Team",
       },
     ],
     [
       {
-        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop",
         name: "Rachel Green",
         position: "Design Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop",
         name: "Tom Holland",
         position: "Design Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=400&fit=crop",
         name: "Maya Patel",
         position: "Design Team",
       },
     ],
     [
       {
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
         name: "Daniel Brown",
         position: "Finance Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
         name: "Olivia Taylor",
         position: "Finance Team",
       },
     ],
     [
       {
-        image: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=400&fit=crop",
         name: "Alex Turner",
         position: "Content Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=400&h=400&fit=crop",
         name: "Nina Johnson",
         position: "Content Team",
       },
     ],
     [
       {
-        image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=400&h=400&fit=crop",
         name: "Kevin Lee",
         position: "Technical Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=400&fit=crop",
         name: "Priya Sharma",
         position: "Technical Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=400&h=400&fit=crop",
         name: "Marcus White",
         position: "Technical Team",
       },
     ],
     [
       {
-        image: "https://images.unsplash.com/photo-1464863979621-258859e62245?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1464863979621-258859e62245?w=400&h=400&fit=crop",
         name: "Sophie Adams",
         position: "Events Team",
       },
       {
-        image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=400&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=400&fit=crop",
         name: "Jacob Miller",
         position: "Events Team",
       },
@@ -176,7 +190,7 @@ export default function Committee() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   {/* Social Icons (appear on hover) */}
                   <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                     <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-[#8a48e7] hover:text-white transition-colors shadow-lg">
@@ -230,13 +244,15 @@ export default function Committee() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: groupIndex * 0.1, duration: 0.6 }}
-              className={`flex ${group.length === 3 ? 'justify-center' : 'justify-center'} gap-6 flex-wrap`}
+              className={`flex ${
+                group.length === 3 ? "justify-center" : "justify-center"
+              } gap-6 flex-wrap`}
             >
               {group.map((member, memberIndex) => (
                 <motion.div
                   key={memberIndex}
                   className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-purple-100 hover:border-[#8a48e7] ${
-                    group.length === 3 ? 'w-72' : 'w-80'
+                    group.length === 3 ? "w-72" : "w-80"
                   }`}
                 >
                   <div className="flex items-center gap-4 p-5">
@@ -262,7 +278,7 @@ export default function Committee() {
                       <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
                         {member.position}
                       </p>
-                      
+
                       {/* Social Icons */}
                       <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         <button className="w-8 h-8 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-lg flex items-center justify-center hover:scale-110 transition-transform shadow-md">

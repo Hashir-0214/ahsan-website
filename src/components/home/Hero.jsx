@@ -87,11 +87,11 @@ export default function Hero() {
             <motion.div animate={floatAnimation} className="relative">
               <div className="relative rounded-3xl p-8">
                 <Image
-                  src="/logo.png"
+                  src="/assets/logo.png"
                   alt="Cochin Connect"
                   width={256}
                   height={256}
-                  className="w-64 mx-auto mb-6 object-contain"
+                  className="w-48 mx-auto mb-6 object-contain"
                   priority
                 />
                 <div className="text-center">

@@ -52,11 +52,11 @@ export default function Header() {
           <div className="relative">
             <div className="absolute inset-0 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
             <Image
-              src="/logo.png"
+              src="/assets/logo.png"
               alt="Cochin Connect Logo"
               width={48}
               height={48}
-              className="relative rounded-xl transition-transform group-hover:scale-105"
+              className="w-full h-auto relative rounded-xl transition-transform group-hover:scale-105"
             />
           </div>
           <div className="hidden sm:block">
