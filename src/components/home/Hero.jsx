@@ -69,7 +69,7 @@ export default function Hero() {
             </h2>
 
             <div className="space-y-5 text-gray-700 text-md leading-relaxed">
-              <p className="relative pl-6 border-l-4 border-[#16a741]">
+              <p className="relative text-gray-500 pl-6 border-l-4 border-[#16a741]">
                 <strong className="text-[#1FA447]">
                   Al-Hidaya Students Association (AHSAn)
                 </strong>
@@ -98,7 +98,7 @@ export default function Hero() {
                   <h1 className="text-5xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2">
                     AHSAn
                   </h1>
-                  <p className="text-xl text-gray-600 poppins-medium">
+                  <p className="text-xl text-gray-400 poppins-medium">
                     <strong className="text-[#1FA447]">A</strong>l  
                     <strong className="text-[#1FA447]"> H</strong>idaya 
                     <strong className="text-[#1FA447]"> S</strong>tudents 

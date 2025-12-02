@@ -49,7 +49,7 @@ export default function Programs() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-5 gap-8 mb-10">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-6 mb-10">
         {programs.map((program, index) => (
           <motion.div
             key={index}
