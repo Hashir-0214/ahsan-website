@@ -69,13 +69,12 @@ export default function Footer() {
                   className="relative w-12 h-auto rounded-xl object-contain"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]">
+              <h3 className="text-2xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2]">
                 AHSAN
               </h3>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-              Alumni Association of Higher Secondary Students of Arts & Science,
-              Nilambur
+            <p className="text-gray-400 mb-6 poppins-regular leading-relaxed text-sm">
+              Alumni Association of Higher Secondary Students of Arts & Science
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
@@ -93,7 +92,7 @@ export default function Footer() {
 
           {/* About Section */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-white flex items-center">
+            <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
               <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
               About
             </h4>
@@ -102,7 +101,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group text-sm"
+                    className="text-gray-400 hover:text-white transition-colors poppins-regular duration-300 flex items-center group text-sm"
                   >
                     <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#8a48e7]" />
                     {link.label}
@@ -114,7 +113,7 @@ export default function Footer() {
 
           {/* Resources Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-3 text-white">
+            <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
               <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
               Quick Links
             </h4>
@@ -123,7 +122,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group text-sm"
+                    className="text-gray-400 hover:text-white transition-colors poppins-regular duration-300 flex items-center group text-sm"
                   >
                     <ArrowRight className="w-3 h-3 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#8a48e7]" />
                     {link.label}
@@ -135,7 +134,7 @@ export default function Footer() {
 
           {/* Publications Section */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-white flex items-center">
+            <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
               <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
               Publications
             </h4>
@@ -144,7 +143,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group text-sm"
+                    className="text-gray-400 hover:text-white transition-colors poppins-regular duration-300 flex items-center group text-sm"
                   >
                     <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#8a48e7]" />
                     {link.label}
@@ -156,7 +155,7 @@ export default function Footer() {
 
           {/* Contact Section */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-white flex items-center">
+            <h4 className="text-lg poppins-semibold mb-6 text-white flex items-center">
               <span className="w-8 h-0.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mr-3"></span>
               Get in Touch
             </h4>
@@ -165,17 +164,17 @@ export default function Footer() {
                 href="mailto:ahsannilambur@gmail.com"
                 className="flex items-start text-gray-400 hover:text-white transition-colors group"
               >
-                <Mail className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] group-hover:scale-110 transition-transform flex-shrink-0" />
-                <span className="text-sm">ahsannilambur@gmail.com</span>
+                <Mail className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] flex-shrink-0" />
+                <span className="text-sm poppins-regular">ahsannilambur@gmail.com</span>
               </a>
               <a
                 href="tel:+919876543210"
                 className="flex items-start text-gray-400 hover:text-white transition-colors group"
               >
-                <Phone className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] group-hover:scale-110 transition-transform flex-shrink-0" />
-                <span className="text-sm">+91 98765 43210</span>
+                <Phone className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] flex-shrink-0" />
+                <span className="text-sm poppins-regular">+91 98765 43210</span>
               </a>
-              <div className="flex items-start text-gray-400">
+              <div className="flex items-start text-gray-400 poppins-regular">
                 <MapPin className="w-5 h-5 mr-3 mt-0.5 text-[#8a48e7] flex-shrink-0" />
                 <span className="text-sm">
                   Higher Secondary School
