@@ -104,7 +104,7 @@ export default function EventsSchedulePage() {
               <Calendar className="w-10 h-10 text-white" />
             </div>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6">
+          <h1 className="text-5xl md:text-6xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6">
             EVENTS SCHEDULE
           </h1>
           <div className="w-32 h-1.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-6"></div>
@@ -134,13 +134,13 @@ export default function EventsSchedulePage() {
                   <div className="relative h-80 lg:h-full">
                     {/* Category Badge */}
                     <div className="">
-                      <span className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-bold flex items-center gap-2 mx-auto">
+                      <span className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm poppins-bold flex items-center gap-2 mx-auto">
                         <Tag className="w-4 h-4 text-[#8a48e7]" />
                         {event.category}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-gray-800 font-bold mb-1">
+                    <div className="flex items-center gap-2 text-gray-800 poppins-bold mb-1">
                       <Calendar className="w-5 h-5 text-[#8a48e7]" />
                       {event.date}
                     </div>
@@ -149,7 +149,7 @@ export default function EventsSchedulePage() {
 
                 {/* Content Section */}
                 <div className="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
-                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6 group-hover:text-[#8a48e7] transition-colors">
+                  <h2 className="text-3xl lg:text-4xl poppins-bold text-gray-800 mb-6 group-hover:text-[#8a48e7] transition-colors">
                     {event.title}
                   </h2>
                 </div>
@@ -168,7 +168,7 @@ export default function EventsSchedulePage() {
         >
           <div className="bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-3xl p-12 text-center shadow-2xl">
             <Calendar className="w-16 h-16 text-white mx-auto mb-6" />
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h3 className="text-3xl md:text-4xl poppins-bold text-white mb-4">
               Stay Updated on Events
             </h3>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
@@ -178,7 +178,7 @@ export default function EventsSchedulePage() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-white text-[#8a48e7] rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="px-10 py-4 bg-white text-[#8a48e7] rounded-xl poppins-bold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Subscribe to Calendar
             </motion.button>

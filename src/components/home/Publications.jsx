@@ -46,7 +46,7 @@ export default function Publications() {
             <BookOpen className="w-8 h-8 text-white" />
           </div>
         </div>
-        <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+        <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
           OUR PUBLICATIONS
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-4"></div>
@@ -74,7 +74,7 @@ export default function Publications() {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute top-4 right-4">
-                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-[#8a48e7] text-xs font-semibold rounded-full shadow-md">
+                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-[#8a48e7] text-xs poppins-semibold rounded-full shadow-md">
                   {publication.category}
                 </span>
               </div>
@@ -83,7 +83,7 @@ export default function Publications() {
 
             {/* Content Section */}
             <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#8a48e7] transition-colors">
+              <h3 className="text-xl poppins-bold text-gray-800 mb-3 group-hover:text-[#8a48e7] transition-colors">
                 {publication.title}
               </h3>
 
@@ -104,7 +104,7 @@ export default function Publications() {
         className="text-center mt-12"
       >
         <Link href="/publications">
-          <button className="px-8 py-3 border-2 border-[#8a48e7] text-[#8a48e7] rounded-full font-semibold hover:bg-[#8a48e7] hover:text-white transition-all duration-300 inline-flex items-center gap-2">
+          <button className="px-8 py-3 border-2 border-[#8a48e7] text-[#8a48e7] rounded-full poppins-semibold hover:bg-[#8a48e7] hover:text-white transition-all duration-300 inline-flex items-center gap-2">
             View Publications
             <ExternalLink className="w-4 h-4" />
           </button>

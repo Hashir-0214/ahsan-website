@@ -79,11 +79,11 @@ export default function AnnahdaPage() {
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
                 <div className="inline-block mb-4">
-                  <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold">
+                  <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm poppins-semibold">
                     {magazineInfo.category}
                   </span>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-bold mb-4">
+                <h1 className="text-5xl md:text-7xl poppins-bold mb-4">
                   {magazineInfo.title}
                 </h1>
                 <p className="text-2xl text-white/90 mb-6 italic">
@@ -97,7 +97,7 @@ export default function AnnahdaPage() {
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <motion.button
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-[#8a48e7] transition-all duration-300"
+                    className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-xl poppins-bold hover:bg-white hover:text-[#8a48e7] transition-all duration-300"
                   >
                     Visit Website
                     <ExternalLink className="w-5 h-5" />
@@ -119,7 +119,7 @@ export default function AnnahdaPage() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+            <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
               About Annahda
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full"></div>
@@ -143,7 +143,7 @@ export default function AnnahdaPage() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+            <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
               What's Inside
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full"></div>
@@ -164,7 +164,7 @@ export default function AnnahdaPage() {
                     <feature.icon className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#8a48e7] transition-colors">
+                    <h3 className="text-xl poppins-bold text-gray-800 mb-2 group-hover:text-[#8a48e7] transition-colors">
                       {feature.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">

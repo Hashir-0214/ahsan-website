@@ -4,23 +4,25 @@
 
 import { Crown, Star, Mail, Linkedin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function HomeCommittee() {
   const featuredMembers = [
     {
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-      name: "John Anderson",
+      image: "/assets/core-committee/irfan.jpg",
+      name: "Irfan",
       position: "President",
     },
     {
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-      name: "Sarah Mitchell",
-      position: "Vice President",
+      image: "/assets/core-committee/shifan.jpg",
+      name: "Shifan",
+      position: "Secretary",
     },
     {
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-      name: "Michael Chen",
-      position: "Secretary",
+      image: "/assets/core-committee/munavvar.jpg",
+      name: "Munawir",
+      position: "Treasurer",
     },
   ];
 
@@ -33,7 +35,7 @@ export default function HomeCommittee() {
       className="mb-36 max-w-7xl mx-auto px-6"
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
           Our Committee
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-4"></div>
@@ -54,14 +56,16 @@ export default function HomeCommittee() {
           >
             <div className="bg-white rounded-md overflow-hidden shadow-lg transition-all duration-500 border border-purple-100">
               {/* Image Container */}
-              <div className="relative h-60 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                <img
+              <div className="relative h-72 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                <Image
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-top object-cover group-hover:scale-110 transition-transform duration-700"
+                  width={288}
+                  height={288}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Social Icons (appear on hover) */}
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-[#8a48e7] hover:text-white transition-colors shadow-lg">
@@ -90,14 +94,15 @@ export default function HomeCommittee() {
       </div>
 
       <div className="text-center">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="group px-8 py-3 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
-        >
-          View Full Committee
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </motion.button>
+        <Link href="/committee" passHref>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            className="group px-8 py-3 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] text-white rounded-full poppins-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
+          >
+            View Full Committee
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+        </Link>
       </div>
     </motion.div>
   );

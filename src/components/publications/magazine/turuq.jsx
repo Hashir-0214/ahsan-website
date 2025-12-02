@@ -137,7 +137,7 @@ export default function TuruqPage() {
                 <div className="absolute top-6 right-6 z-20">
                   <div className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
                     <Globe className="w-5 h-5 text-blue-600 inline mr-2" />
-                    <span className="text-blue-600 font-bold text-sm">Online</span>
+                    <span className="text-blue-600 poppins-bold text-sm">Online</span>
                   </div>
                 </div>
               </motion.div>
@@ -151,11 +151,11 @@ export default function TuruqPage() {
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
                 <div className="inline-block mb-4">
-                  <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold">
+                  <span className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm poppins-semibold">
                     {magazineInfo.category}
                   </span>
                 </div>
-                <h1 className="text-6xl md:text-8xl font-bold mb-2">
+                <h1 className="text-6xl md:text-8xl poppins-bold mb-2">
                   {magazineInfo.title}
                 </h1>
                 <p className="text-2xl text-white/90 mb-2 italic">
@@ -172,7 +172,7 @@ export default function TuruqPage() {
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <motion.button
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl poppins-bold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Globe className="w-5 h-5" />
                     Visit Webzine
@@ -194,7 +194,7 @@ export default function TuruqPage() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 mb-2">
+            <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 mb-2">
               About TURUQ
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto rounded-full"></div>
@@ -218,7 +218,7 @@ export default function TuruqPage() {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 mb-2">
+            <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 mb-2">
               What's Inside
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto rounded-full"></div>

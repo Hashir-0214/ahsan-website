@@ -184,7 +184,7 @@ export default function Contact() {
                                         className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3"
                                     >
                                         <CheckCircle className="w-5 h-5 text-green-600" />
-                                        <p className="text-green-700 font-medium">Thank you! We'll get back to you soon.</p>
+                                        <p className="text-green-700 poppins-medium">Thank you! We'll get back to you soon.</p>
                                     </motion.div>
                                 )}
 
@@ -307,7 +307,7 @@ export default function Contact() {
                                 <div className="space-y-3">
                                     {officeHours.map((schedule, index) => (
                                         <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-                                            <span className="text-sm font-medium text-gray-700">{schedule.day}</span>
+                                            <span className="text-sm poppins-medium text-gray-700">{schedule.day}</span>
                                             <span className="text-sm text-gray-600">{schedule.hours}</span>
                                         </div>
                                     ))}

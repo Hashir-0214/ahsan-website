@@ -78,7 +78,7 @@ export default function Header() {
               return (
                 <div key={link.label} className="relative group">
                   <button 
-                    className={`flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
+                    className={`flex items-center px-4 py-2 text-sm poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
                       isParentActive ? "text-[#5c21d2]" : "text-gray-700 hover:text-[#5c21d2]"
                     }`}
                   >
@@ -104,7 +104,7 @@ export default function Header() {
                                         : "hover:bg-gradient-to-r hover:from-[#8a48e7]/5 hover:to-[#5c21d2]/5"
                                     }`}
                                 >
-                                    <p className={`text-sm font-semibold ${isSubActive ? "text-[#5c21d2]" : "text-gray-800 group-hover/item:text-[#5c21d2]"}`}>
+                                    <p className={`text-sm poppins-semibold ${isSubActive ? "text-[#5c21d2]" : "text-gray-800 group-hover/item:text-[#5c21d2]"}`}>
                                     {subItem.label}
                                     </p>
                                     <ExternalLink className={`w-4 h-4 mt-1 ${isSubActive ? "text-[#8a48e7]" : "text-gray-400 group-hover/item:text-[#8a48e7]"}`} />
@@ -125,7 +125,7 @@ export default function Header() {
               <Link
                 key={link.to}
                 href={link.to}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
+                className={`relative px-4 py-2 text-sm poppins-medium rounded-lg transition-all duration-300 group ${
                     isActive ? "text-[#5c21d2]" : "text-gray-700 hover:text-[#5c21d2]"
                 }`}
               >
@@ -172,7 +172,7 @@ export default function Header() {
                   >
                     <button
                       onClick={() => toggleMobileSubmenu(index)}
-                      className={`w-full flex items-center justify-between px-4 py-3 font-medium rounded-lg hover:bg-purple-50 transition-all ${
+                      className={`w-full flex items-center justify-between px-4 py-3 poppins-medium rounded-lg hover:bg-purple-50 transition-all ${
                           isParentActive ? "text-[#5c21d2]" : "text-gray-700 hover:text-[#5c21d2]"
                       }`}
                     >
@@ -224,7 +224,7 @@ export default function Header() {
                   key={link.to}
                   href={link.to}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`px-4 py-3 font-medium rounded-lg transition-all duration-300 ${
+                  className={`px-4 py-3 poppins-medium rounded-lg transition-all duration-300 ${
                       isActive 
                       ? "bg-gradient-to-r from-[#8a48e7]/10 to-[#5c21d2]/10 text-[#5c21d2]"
                       : "text-gray-700 hover:bg-gradient-to-r hover:from-[#8a48e7]/10 hover:to-[#5c21d2]/10 hover:text-[#5c21d2]"

@@ -98,7 +98,7 @@ export default function Hero() {
                   <h1 className="text-5xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-2">
                     AHSAn
                   </h1>
-                  <p className="text-xl text-gray-600 font-medium">
+                  <p className="text-xl text-gray-600 poppins-medium">
                     <strong className="text-[#5c21d2]">A</strong>l  
                     <strong className="text-[#5c21d2]"> H</strong>idaya 
                     <strong className="text-[#5c21d2]"> S</strong>tudents 

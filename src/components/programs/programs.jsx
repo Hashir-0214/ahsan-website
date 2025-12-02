@@ -49,7 +49,7 @@ export default function ProgramsPage() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6">
+          <h1 className="text-5xl md:text-6xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-6">
             OUR PROGRAMS
           </h1>
           <div className="w-32 h-1.5 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full mb-6"></div>
@@ -80,7 +80,7 @@ export default function ProgramsPage() {
 
                   {/* Title Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 transition-colors">
+                    <h3 className="text-xl poppins-bold text-white mb-2 transition-colors">
                       {program.title}
                     </h3>
                   </div>

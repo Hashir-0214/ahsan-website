@@ -41,7 +41,7 @@ export default function Mission() {
             <Compass className="w-8 h-8 text-white" />
           </div>
         </div>
-        <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
+        <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mb-4">
           OUR MISSION
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] mx-auto rounded-full"></div>
@@ -78,7 +78,7 @@ export default function Mission() {
         className="mt-12 max-w-4xl mx-auto"
       >
         <div className="bg-gradient-to-r from-[#8a48e7] to-[#5c21d2] rounded-2xl p-8 shadow-xl text-center">
-          <p className="text-white text-lg font-semibold leading-relaxed">
+          <p className="text-white text-lg poppins-semibold leading-relaxed">
             We are committed to creating lasting impact by bridging
             opportunities, nurturing talent, and building a sustainable future
             for businesses and professionals in our community.
