@@ -1,28 +1,34 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Programs() {
   const programs = [
     {
       image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
-      title: "Job Bank",
+        "/assets/programs/fiqh-seminar.jpeg",
+      title: "Fiqh Seminar",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
-      title: "Business Support",
+        "/assets/programs/neelakasham-summer-camp.jpeg",
+      title: "Neelakasham Summer Camp",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=300&fit=crop",
-      title: "Startup Support",
+        "/assets/programs/rijal-al-fikr.jpeg",
+      title: "Rijal Al Fikr",
     },
     {
       image:
-        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop",
-      title: "Training Programs",
+        "/assets/programs/union-inauguration.jpeg",
+      title: "Union Inauguration",
+    },
+    {
+      image:
+        "/assets/programs/book-fair.jpeg",
+      title: "Book Fair",
     },
   ];
 
@@ -43,7 +49,7 @@ export default function Programs() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-8 mb-10">
         {programs.map((program, index) => (
           <motion.div
             key={index}
@@ -53,17 +59,19 @@ export default function Programs() {
             transition={{ delay: index * 0.1 }}
             className="group cursor-pointer"
           >
-            <div className="bg-white rounded overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100">
-              <div className="relative h-60 overflow-hidden">
-                <img
+            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100">
+              <div className="relative h-72 overflow-hidden">
+                <Image
                   src={program.image}
                   alt={program.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="py-3">
-                <h3 className="text-md poppins-bold text-gray-800 text-center group-hover:text-[#16a741] transition-colors">
+                <h3 className="text-[10px] lg:text-[12px] poppins-bold line-clamp-1 text-gray-800 text-center group-hover:text-[#16a741] transition-colors">
                   {program.title}
                 </h3>
               </div>

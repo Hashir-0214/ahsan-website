@@ -60,9 +60,9 @@ export default function Header() {
             />
           </div>
           <div className="hidden sm:block">
-            <div className="text-xl poppins-bold leading-4 text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447]">
-              AHSAn <br />
-              <span className="text-xs">Al-Hidaya Students' Association</span>
+            <div className="poppins-bold leading-4 text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447]">
+              <span className="text-[12px] lg:text-xl">AHSAn</span> <br />
+              <span className="text-[10px] lg:text-[12px] line-clamp-1">Al-Hidaya Students' Association</span>
             </div>
           </div>
         </Link>
@@ -70,7 +70,6 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => {
-            // Check if parent should be active (if current path starts with parent path, but not for root "/")
             const isParentActive = link.subLinks 
               ? link.subLinks.some(sub => pathname === sub.to)
               : pathname === link.to;
@@ -79,7 +78,7 @@ export default function Header() {
               return (
                 <div key={link.label} className="relative group">
                   <button 
-                    className={`flex items-center px-4 py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
+                    className={`flex items-center px-2 lg:px-4 py-1 lg:py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
                       isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
                     }`}
                   >
@@ -99,13 +98,13 @@ export default function Header() {
                                 <Link
                                     key={subItem.label}
                                     href={subItem.to}
-                                    className={`flex justify-between py-3 px-6 rounded-xl transition-colors group/item ${
+                                    className={`flex justify-between py-2 lg:py-3 px-3 lg:px-6 rounded-xl transition-colors group/item ${
                                         isSubActive 
-                                        ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10" // Active Background
+                                        ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10"
                                         : "hover:bg-gradient-to-r hover:from-[#16a741]/5 hover:to-[#1FA447]/5"
                                     }`}
                                 >
-                                    <p className={`text-sm poppins-semibold ${isSubActive ? "text-[#1FA447]" : "text-gray-800 group-hover/item:text-[#1FA447]"}`}>
+                                    <p className={`text-[12px] lg:text-[14px] poppins-semibold ${isSubActive ? "text-[#1FA447]" : "text-gray-800 group-hover/item:text-[#1FA447]"}`}>
                                     {subItem.label}
                                     </p>
                                     <ExternalLink className={`w-4 h-4 mt-1 ${isSubActive ? "text-[#16a741]" : "text-gray-400 group-hover/item:text-[#16a741]"}`} />
@@ -119,14 +118,13 @@ export default function Header() {
               );
             }
 
-            // Standard Link Active State
             const isActive = pathname === link.to;
 
             return (
               <Link
                 key={link.to}
                 href={link.to}
-                className={`relative px-4 py-2 text-sm poppins-medium rounded-lg transition-all duration-300 group ${
+                className={`relative px-2 lg:px-4 py-1 lg:py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-all duration-300 group ${
                     isActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
                 }`}
               >
