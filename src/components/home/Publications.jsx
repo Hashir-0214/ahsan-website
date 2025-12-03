@@ -3,6 +3,7 @@
 import { BookOpen, Calendar, Download, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Publications() {
   const publications = [
@@ -67,9 +68,10 @@ export default function Publications() {
           >
             {/* Image Section */}
             <div className="relative h-56 overflow-hidden bg-gray-100">
-              <img
+              <Image
                 src={publication.image}
                 alt={publication.title}
+                fill
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute top-4 right-4">

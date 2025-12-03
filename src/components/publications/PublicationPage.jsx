@@ -5,6 +5,7 @@ import { BookOpen, Calendar, Download, ExternalLink, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { link } from "motion/react-client";
+import Image from "next/image";
 
 export default function PublicationsPage() {
   const publications = [
@@ -77,9 +78,10 @@ export default function PublicationsPage() {
                 {/* Image Section */}
                 <div className="lg:w-2/5 relative overflow-hidden">
                   <div className="relative h-80 lg:h-full">
-                    <img
+                    <Image
                       src={publication.image}
                       alt={publication.title}
+                      fill
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
 

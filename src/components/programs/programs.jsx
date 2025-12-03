@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ProgramsPage() {
   const programs = [
@@ -170,9 +171,10 @@ export default function ProgramsPage() {
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100">
                 {/* Image Container */}
                 <div className="relative h-80 overflow-hidden">
-                  <img
+                  <Image
                     src={program.image}
                     alt={program.title}
+                    fill
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   {/* Gradient Overlay */}
