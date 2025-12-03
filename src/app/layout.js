@@ -54,6 +54,9 @@ export const metadata = {
       },
     ],
   },
+  verification: {
+    google: "gNoxfU6z9VxyKeCyCK6DI5zGOs9K7gaPYJYORPg9SNo",
+  },
   twitter: {
     card: "summary_large_image",
     title: "AHSAn Students Union  Sabeelul Hidaya Islamic College",
