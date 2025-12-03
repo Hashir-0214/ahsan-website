@@ -6,50 +6,40 @@ import Link from "next/link";
 export default function Programs() {
   const programs = [
     {
-      image:
-        "/assets/programs/fiqh-seminar.jpeg",
+      image: "/assets/programs/fiqh-seminar.jpeg",
       title: "Fiqh Seminar",
     },
     {
-      image:
-        "/assets/programs/neelakasham-summer-camp.jpeg",
+      image: "/assets/programs/neelakasham-summer-camp.jpeg",
       title: "Neelakasham Summer Camp",
     },
     {
-      image:
-        "/assets/programs/rijal-al-fikr.jpeg",
+      image: "/assets/programs/rijal-al-fikr.jpeg",
       title: "Rijal Al Fikr",
     },
     {
-      image:
-        "/assets/programs/union-inauguration.jpeg",
+      image: "/assets/programs/union-inauguration.jpeg",
       title: "Union Inauguration",
     },
     {
-      image:
-        "/assets/programs/book-fair.jpeg",
+      image: "/assets/programs/book-fair.jpeg",
       title: "Book Fair",
     },
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="mb-36 max-w-7xl mx-auto px-6"
-    >
+    <div id="programs" className="mb-36 max-w-7xl mx-auto px-6">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
+        <h2 className="text-2xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2 md:mb-4">
           Our Programs
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-2 md:mb-4"></div>
+        <p className="text-gray-600 text-[12px] md:text-[14px] max-w-2xl mx-auto">
           Discover programs designed to elevate our career
         </p>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-5 gap-6 mb-10">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-6 mb-10">
         {programs.map((program, index) => (
           <motion.div
             key={index}
@@ -60,7 +50,7 @@ export default function Programs() {
             className="group cursor-pointer"
           >
             <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100">
-              <div className="relative h-72 overflow-hidden">
+              <div className="relative h-40 md:h-72 overflow-hidden">
                 <Image
                   src={program.image}
                   alt={program.title}
@@ -91,6 +81,6 @@ export default function Programs() {
           </motion.button>
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }

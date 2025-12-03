@@ -27,24 +27,18 @@ export default function HomeCommittee() {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="mb-36 max-w-7xl mx-auto px-6"
-    >
+    <div id="committee" className="mb-36 max-w-7xl mx-auto px-6">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
+        <h2 className="text-2xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2 md:mb-4">
           Our Committee
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-4"></div>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-2 md:mb-4"></div>
+        <p className="text-gray-600 text-[12px] md:text-[14px] max-w-2xl mx-auto">
           Meet the leadership team guiding our mission forward
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
+      <div className="grid grid-cols-3 gap-2 md:gap-8 max-w-4xl mx-auto mb-10">
         {featuredMembers.map((member, index) => (
           <motion.div
             key={index}
@@ -56,7 +50,7 @@ export default function HomeCommittee() {
           >
             <div className="bg-white rounded-md overflow-hidden shadow-lg transition-all duration-500 border border-purple-100">
               {/* Image Container */}
-              <div className="relative h-72 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+              <div className="relative h-40 md:h-72 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -80,10 +74,10 @@ export default function HomeCommittee() {
               {/* Content */}
               <div className="p-3 text-center relative">
                 <div className="">
-                  <h3 className="text-md uppercase poppins-bold text-gray-800 mb-2 group-hover:text-[#16a741] transition-colors">
+                  <h3 className="text-[12px] md:text-[14px] uppercase poppins-bold text-gray-800 md:mb-2 group-hover:text-[#16a741] transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-xs poppins-semibold text-[#16a741] uppercase tracking-wider">
+                  <p className="text-[11px] md:text-[12px] poppins-semibold text-[#16a741] uppercase tracking-wider">
                     {member.position}
                   </p>
                 </div>
@@ -104,6 +98,6 @@ export default function HomeCommittee() {
           </motion.button>
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }

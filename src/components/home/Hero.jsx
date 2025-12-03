@@ -39,7 +39,7 @@ export default function Hero() {
       className="relative w-full pt-60 pb-20 px-6"
     >
       {/* Background Blobs */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-[#16a741]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+      <div id="about" className="absolute top-20 right-10 w-72 h-72 bg-[#16a741]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
       <div
         className="absolute bottom-20 left-10 w-72 h-72 bg-[#1FA447]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"
         style={{ animationDelay: "1s" }}
@@ -73,7 +73,7 @@ export default function Hero() {
                 <strong className="text-[#1FA447]">
                   Al-Hidaya Students Association (AHSAn)
                 </strong>
-                , the Students’ Union of Sabeelul Hidaya Islamic College, is
+                , the Students' Union of Sabeelul Hidaya Islamic College, is
                 dedicated to nurturing the academic, cultural, and personal
                 growth of every student. Through its dynamic wings and
                 subcommittees, AHSAn conducts meaningful programmes—from debates

@@ -89,10 +89,7 @@ export default function Contact() {
 
     return (
         <div className="w-full bg-gradient-to-br from-purple-50 via-white to-violet-50 overflow-hidden pt-32">
-            <motion.section
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
+            <section
                 className="relative w-full pb-20 px-6"
             >
                 {/* Decorative Elements */}
@@ -101,46 +98,39 @@ export default function Contact() {
 
                 <div className="relative w-full max-w-7xl mx-auto">
                     {/* Header */}
-                    <motion.div
+                    <div
                         variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
                         className="text-center mb-16"
                     >
-                        <motion.div variants={itemVariants} className="inline-block mb-6">
+                        <div variants={itemVariants} className="inline-block mb-6">
                             <span className="px-5 py-2 bg-gradient-to-r from-[#16a741] to-[#1FA447] text-white rounded-full text-sm poppins-semibold shadow-lg">
                                 Get In Touch
                             </span>
-                        </motion.div>
+                        </div>
 
-                        <motion.h1
+                        <h1
                             variants={itemVariants}
                             className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2"
                         >
                             Let's Connect
-                        </motion.h1>
+                        </h1>
 
-                        <motion.p
+                        <p
                             variants={itemVariants}
                             className="text-[14px] lg:text-[16px] text-gray-700 max-w-3xl mx-auto poppins-regular leading-relaxed"
                         >
                             Have questions? We're here to help you grow your business network
-                        </motion.p>
-                    </motion.div>
+                        </p>
+                    </div>
 
                     {/* Contact Info Cards */}
-                    <motion.div
+                    <div
                         variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
                         className="grid grid-cols-3 gap-6 mb-16"
                     >
                         {contactInfo.map((info, index) => (
-                            <motion.a
+                            <a
                                 key={index}
-                                href={info.link}
-                                variants={itemVariants}
                                 className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100 overflow-hidden text-center"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#16a741]/5 to-[#1FA447]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -155,18 +145,14 @@ export default function Contact() {
                                 </div>
 
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#16a741]/10 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-500"></div>
-                            </motion.a>
+                            </a>
                         ))}
-                    </motion.div>
+                    </div>
 
                     {/* Main Content Grid */}
                     <div className="grid lg:grid-cols-2 gap-8">
                         {/* Contact Form */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
+                        <div
                             className="lg:col-span-2"
                         >
                             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-purple-100">
@@ -285,12 +271,12 @@ export default function Contact() {
                                     </motion.button>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
 
                         
                     </div>
                 </div>
-            </motion.section>
+            </section>
         </div>
     );
 }

@@ -18,16 +18,10 @@ export default function Footer() {
 
   const footerLinks = {
     about: [
-      { href: "/about", label: "About Us" },
-      { href: "/vision", label: "Vision" },
-      { href: "/mission", label: "Mission" },
-      { href: "/committee", label: "Committee" },
-    ],
-    programs: [
-      { href: "/programs", label: "All Programs" },
-      { href: "/programs/job-bank", label: "Job Bank" },
-      { href: "/programs/startup-support", label: "Startup Support" },
-      { href: "/programs/training", label: "Training" },
+      { href: "/#about", label: "About Us" },
+      { href: "/#vision", label: "Vision" },
+      { href: "/#mission", label: "Mission" },
+      { href: "/#committee", label: "Committee" },
     ],
     publications: [
       { href: "/publications", label: "All Publications" },
@@ -36,10 +30,10 @@ export default function Footer() {
       { href: "/publications/chromadiaries", label: "Chromadiaries" },
     ],
     resources: [
+      { href: "/programs", label: "Programs" },
+      { href: "/committee", label: "Committee" },
       { href: "/events", label: "Events" },
-      { href: "/gallery", label: "Gallery" },
       { href: "/contact", label: "Contact" },
-      { href: "/membership", label: "Membership" },
     ],
   };
 
@@ -59,7 +53,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
+            <div className="flex items-center space-x-3 mb-2">
               <div className="relative">
                 <Image
                   src="/assets/logo.png"
@@ -73,9 +67,14 @@ export default function Footer() {
                 AHSAN
               </h3>
             </div>
-            <p className="text-gray-400 mb-6 poppins-regular leading-relaxed text-sm">
-              Alumni Association of Higher Secondary Students of Arts & Science
+            <p className="text-[12px] text-gray-400 poppins-medium">
+              <strong className="text-[#1FA447]">A</strong>l
+              <strong className="text-[#1FA447]"> H</strong>idaya
+              <strong className="text-[#1FA447]"> S</strong>tudents
+              <strong className="text-[#1FA447]"> A</strong>ssociatio
+              <strong className="text-[#1FA447]">n</strong>
             </p>
+            <p className="poppins-regular text-[12px] text-gray-400 mb-2">Sabeelul Hidaya Islamic College</p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
                 <a
@@ -165,23 +164,23 @@ export default function Footer() {
                 className="flex items-start text-gray-400 hover:text-white transition-colors group"
               >
                 <Mail className="w-5 h-5 mr-3 mt-0.5 text-[#16a741] flex-shrink-0" />
-                <span className="text-sm poppins-regular">ahsannilambur@gmail.com</span>
+                <span className="text-sm poppins-regular">
+                  ahsansabeel@gmail.com
+                </span>
               </a>
               <a
                 href="tel:+919876543210"
                 className="flex items-start text-gray-400 hover:text-white transition-colors group"
               >
                 <Phone className="w-5 h-5 mr-3 mt-0.5 text-[#16a741] flex-shrink-0" />
-                <span className="text-sm poppins-regular">+91 98765 43210</span>
+                <span className="text-sm poppins-regular">+91 8086392526</span>
               </a>
               <div className="flex items-start text-gray-400 poppins-regular">
                 <MapPin className="w-5 h-5 mr-3 mt-0.5 text-[#16a741] flex-shrink-0" />
-                <span className="text-sm">
-                  Higher Secondary School
+                <span className="text-[10px] line-clamp-2">
+                  Sabeelul Hidaya Islamic College
                   <br />
-                  Arts & Science
-                  <br />
-                  Nilambur, Malappuram
+                  Parappur, kottakkal
                 </span>
               </div>
             </div>

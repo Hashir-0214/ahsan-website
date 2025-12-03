@@ -33,7 +33,7 @@ export default function Publications() {
   ];
 
   return (
-    <motion.div
+    <div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -46,11 +46,11 @@ export default function Publications() {
             <BookOpen className="w-8 h-8 text-white" />
           </div>
         </div>
-        <h2 className="text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-4">
+        <h2 className="text-2xl md:text-4xl poppins-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2 md:mb-4">
           OUR PUBLICATIONS
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-4"></div>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600 text-[12px] md:text-[14px] max-w-2xl mx-auto">
           Discover our student-led publications featuring inspiring ideas, thoughtful writings, and diverse expressions across languages and disciplines.
         </p>
       </div>
@@ -109,6 +109,6 @@ export default function Publications() {
           </button>
         </Link>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
