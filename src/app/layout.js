@@ -1,26 +1,77 @@
-"use client";
+// app/layout.js 
 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const siteUrl = "https://ahsan.sabeelulhidaya.info";
+
+export const metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "AHSAn Students Union – Sabeelul Hidaya Islamic College",
+    template: "%s | AHSAn Students Union",
+  },
+  description:
+    "Official website of AHSAn Students Union at Sabeelul Hidaya Islamic College, Parappur, Kottakkal, Malappuram (affiliated to Darul Huda Islamic University, Hudawi graduation). News, events, activities, and student initiatives.",
+  keywords: [
+    "AHSAn",
+    "Students Union",
+    "Sabeelul Hidaya Islamic College",
+    "Parappur",
+    "Kottakkal",
+    "Malappuram",
+    "Darul Huda Islamic University",
+    "Hudawi",
+    "student activities",
+    "ahsan parappur",
+  ],
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "AHSAn Students Union - Sabeelul Hidaya Islamic College",
+    description:
+      "Official AHSAn Students Union website of Sabeelul Hidaya Islamic College, Parappur, Kottakkal, Malappuram.",
+    siteName: "AHSAn Students Union",
+    locale: "en_IN",
+    images: [
+      {
+        url: "/assets/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "AHSAn Students Union - Sabeelul Hidaya Islamic College",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AHSAn Students Union  Sabeelul Hidaya Islamic College",
+    description:
+      "Official AHSAn Students Union website of Sabeelul Hidaya Islamic College, Parappur, Kottakkal, Malappuram.",
+    images: ["/assets/logo.png"],
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <title>AHSAn | Students Union</title>
-        <meta
-          name="description"
-          content="AHSAn is a platform dedicated to fostering thoughtful discourse on culture, art, and society."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-      </head>
-      <body>
+      <body className={poppins.className}>
         <Header />
-        <div>{children}</div>
+        <main>{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
