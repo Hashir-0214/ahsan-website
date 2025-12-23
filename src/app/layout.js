@@ -17,7 +17,7 @@ const siteUrl = "https://ahsan.sabeelulhidaya.info";
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "AHSAn Students Union – Sabeelul Hidaya Islamic College",
+    default: "AHSAn Students Union - Sabeelul Hidaya Islamic College",
     template: "%s | AHSAn Students Union",
   },
   description:

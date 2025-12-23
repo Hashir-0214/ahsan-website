@@ -107,7 +107,7 @@ export default function EventsSchedulePage() {
         </div>
         <div className="w-full p-4 rounded-2xl border-2 border-red-700">
           <Image
-            src="/assets/calender.jpg"
+            src="/assets/calenr.jpg"
             alt="Events"
             width={2000}
             height={1000}
