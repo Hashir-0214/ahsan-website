@@ -149,22 +149,7 @@ export default function VotingBallot({ voter, onFinished }) {
                                     >
                                         {/* Image Container */}
                                         <div className="relative h-40 md:h-72 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                                            {/* Placeholder/Actual Image Logic */}
-                                            {nominee.photo ? (
-                                                <Image
-                                                    src={nominee.photo} // Ensure backend/data has 'photo' or 'image'
-                                                    alt={nominee.name}
-                                                    className="w-full h-full object-top object-cover group-hover:scale-110 transition-transform duration-700"
-                                                    width={288}
-                                                    height={288}
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400 group-hover:scale-110 transition-transform duration-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 opacity-50" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                                                    </svg>
-                                                </div>
-                                            )}
+                                            <NomineeImage id={nominee.id} name={nominee.name} />
 
                                             {/* Gradient Overlay */}
                                             <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
@@ -222,5 +207,31 @@ export default function VotingBallot({ voter, onFinished }) {
                 ))}
             </div>
         </div>
+    );
+}
+
+function NomineeImage({ id, name }) {
+    const [error, setError] = useState(false);
+    const src = `/nominees/${id}.jpg`;
+
+    if (error) {
+        return (
+            <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400 group-hover:scale-110 transition-transform duration-700">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 opacity-50" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                </svg>
+            </div>
+        );
+    }
+
+    return (
+        <Image
+            src={src}
+            alt={name}
+            className="w-full h-full object-top object-cover group-hover:scale-110 transition-transform duration-700"
+            width={288}
+            height={288}
+            onError={() => setError(true)}
+        />
     );
 }
