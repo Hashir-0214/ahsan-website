@@ -8,6 +8,7 @@ import Team from "@/components/home/Committee";
 import Programs from "@/components/home/Programs";
 import Mission from "@/components/home/Misson";
 import Publications from "@/components/home/Publications";
+import HomeVotingPopup from "@/components/voting/HomeVotingPopup";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Publications />
       <Programs />
       <Team />
+      <HomeVotingPopup />
     </div>
   );
 }

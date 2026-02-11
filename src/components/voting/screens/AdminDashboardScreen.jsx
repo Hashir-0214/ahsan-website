@@ -303,31 +303,31 @@ export default function AdminDashboardScreen({ onLogout, role }) {
         <div className="min-h-screen bg-gray-100 p-6 md:p-12">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#1a237e]">
-                    <div>
+                <div className="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#1a237e] gap-4">
+                    <div className="text-center md:text-left">
                         <h1 className="text-2xl font-bold text-[#1a237e]">Admin Dashboard</h1>
                         <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
                             {isSuper ? "Super Admin Access" : "Standard Access"}
                         </span>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex flex-wrap justify-center gap-3 w-full md:w-auto">
                         <button
                             onClick={() => downloadCSV(stats.votes, "election_results.csv")}
-                            className="px-4 py-2 bg-green-50 text-green-700 font-semibold rounded-lg hover:bg-green-100 transition-colors text-sm"
+                            className="bg-green-50 text-green-700 font-semibold rounded-lg hover:bg-green-100 transition-colors text-sm px-4 py-2 flex-grow md:flex-grow-0 whitespace-nowrap"
                         >
                             Export Results
                         </button>
                         {isSuper && (
                             <button
                                 onClick={() => downloadCSV(logs, "election_logs.csv")}
-                                className="px-4 py-2 bg-purple-50 text-purple-700 font-semibold rounded-lg hover:bg-purple-100 transition-colors text-sm"
+                                className="bg-purple-50 text-purple-700 font-semibold rounded-lg hover:bg-purple-100 transition-colors text-sm px-4 py-2 flex-grow md:flex-grow-0 whitespace-nowrap"
                             >
                                 Export Logs
                             </button>
                         )}
                         <button
                             onClick={() => window.location.reload()}
-                            className="px-6 py-2 bg-blue-50 text-blue-700 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center gap-2"
+                            className="bg-blue-50 text-blue-700 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center gap-2 px-6 py-2 flex-grow md:flex-grow-0"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -336,7 +336,7 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                         </button>
                         <button
                             onClick={onLogout}
-                            className="px-6 py-2 bg-red-50 text-red-600 font-semibold rounded-lg hover:bg-red-100 transition-colors"
+                            className="bg-red-50 text-red-600 font-semibold rounded-lg hover:bg-red-100 transition-colors px-6 py-2 flex-grow md:flex-grow-0"
                         >
                             Logout
                         </button>
@@ -344,22 +344,25 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex space-x-4 mb-8 overflow-x-auto pb-2">
-                    {[
-                        { id: "STATS", label: "Live Stats", visible: true },
-                        { id: "VOTERS", label: "Voter Manager", visible: true },
-                        { id: "LOGS", label: "Audit Logs", visible: isSuper },
-                        { id: "CANDIDATES", label: "Candidates", visible: isSuper },
-                        { id: "SETTINGS", label: "Settings", visible: isSuper },
-                    ].filter(t => t.visible).map(tab => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`px-6 py-2 rounded-full font-bold transition-all whitespace-nowrap ${activeTab === tab.id ? "bg-[#1a237e] text-white shadow-lg" : "bg-white text-gray-600 hover:bg-gray-50"}`}
-                        >
-                            {tab.label}
-                        </button>
-                    ))}
+                {/* Ensure tabs are scrollable on mobile */}
+                <div className="-mx-6 px-6 md:mx-0 md:px-0 overflow-x-auto pb-2 mb-8 hide-scrollbar">
+                    <div className="flex space-x-4 min-w-max">
+                        {[
+                            { id: "STATS", label: "Live Stats", visible: true },
+                            { id: "VOTERS", label: "Voter Manager", visible: true },
+                            { id: "LOGS", label: "Audit Logs", visible: isSuper },
+                            { id: "CANDIDATES", label: "Candidates", visible: isSuper },
+                            { id: "SETTINGS", label: "Settings", visible: isSuper },
+                        ].filter(t => t.visible).map(tab => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`px-6 py-2 rounded-full font-bold transition-all whitespace-nowrap ${activeTab === tab.id ? "bg-[#1a237e] text-white shadow-lg" : "bg-white text-gray-600 hover:bg-gray-50"}`}
+                            >
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 {/* --- STATS VIEW --- */}

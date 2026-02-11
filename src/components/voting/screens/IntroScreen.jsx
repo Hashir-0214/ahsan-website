@@ -175,9 +175,9 @@ export default function IntroScreen({ onStart, onAdmin }) {
                 className="flex flex-wrap justify-center gap-4 mb-8 w-full max-w-4xl"
             >
                 {[
-                    { label: "Total Students", value: stats.total },
+                    { label: "Total Votes", value: stats.total },
                     { label: "Votes Cast", value: stats.voted },
-                    { label: "Not Voted", value: stats.waiting },
+                    { label: "Votes Not Cast", value: stats.waiting },
                 ].map((item, idx) => (
                     <div
                         key={idx}
