@@ -3,19 +3,21 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NOMINEES, POSITIONS, ELECTION_REF } from "@/data/votingData";
 import { onValue, ref, runTransaction, update, push } from "firebase/database";
 import { db } from "@/lib/firebase";
+import { Check, MousePointerClick } from "lucide-react";
 
 export default function VotingBallot({ voter, onFinished }) {
     const [currentPositionIndex, setCurrentPositionIndex] = useState(0);
     const [selections, setSelections] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [nomineesData, setNomineesData] = useState(null);
+    const [selectedNomineeId, setSelectedNomineeId] = useState(null);
 
     // Listen for dynamic nominees
-    useState(() => {
+    useEffect(() => {
         const nomineesRef = ref(db, `${ELECTION_REF}/nominees`);
         const unsubscribe = onValue(nomineesRef, (snapshot) => {
             const data = snapshot.val();
@@ -29,10 +31,12 @@ export default function VotingBallot({ voter, onFinished }) {
     const activeNomineesSource = nomineesData || NOMINEES;
     const nominees = activeNomineesSource[currentPosition] || [];
 
-    const handleVote = async (nominee) => {
-        // Confirm dialog
-        if (!confirm(`Confirm vote for ${nominee.name} as ${currentPosition}?`)) return;
+    // Reset selection when position changes
+    useEffect(() => {
+        setSelectedNomineeId(null);
+    }, [currentPositionIndex]);
 
+    const handleConfirmVote = async (nominee) => {
         const newSelections = { ...selections, [currentPosition]: nominee.id };
         setSelections(newSelections);
 
@@ -107,16 +111,9 @@ export default function VotingBallot({ voter, onFinished }) {
                         <Image src="/assets/logo.png" alt="Logo" width={32} height={32} className="w-8 h-8" />
                         <span className="font-bold text-[#1a237e] text-lg">AHSAN</span>
                     </div>
-                    <div className="bg-indigo-50 px-4 py-2 rounded-full border border-indigo-100">
-                        <span className="text-gray-500 text-xs font-semibold mr-1">VOTER:</span>
-                        {/* Find ID from name or pass ID? Voter object has name but we need ID for path. 
-                LoginScreen passed 'voter' object which comes from VOTERS[id]. 
-                We need to ensure 'voter' object has the ID. 
-                Wait, VOTERS is keyed by ID. The object value doesn't have ID.
-                We need to inject ID in LoginScreen or pass it here.
-                Let's assume LoginScreen passed { id: "1050", ...voterData }
-             */}
-                        <span className="text-[#1a237e] font-bold text-sm truncate max-w-[150px] inline-block align-bottom">{voter?.name}</span>
+                    <div className="bg-indigo-50 px-4 py-2 rounded-full border border-indigo-100 flex items-center gap-2">
+                        <span className="text-gray-500 text-xs font-semibold">VOTER:</span>
+                        <span className="text-[#1a237e] font-bold text-sm truncate max-w-[150px]">{voter?.name}</span>
                     </div>
                 </div>
             </header>
@@ -131,56 +128,95 @@ export default function VotingBallot({ voter, onFinished }) {
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1a237e] mb-10 capitalize tracking-tight">
-                            {currentPosition}
-                        </h2>
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl md:text-4xl poppins-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#16a741] to-[#1FA447] mb-2">
+                                {currentPosition}
+                            </h2>
+                            <div className="w-24 h-1 bg-gradient-to-r from-[#16a741] to-[#1FA447] mx-auto rounded-full mb-4"></div>
+                            <p className="text-gray-500 text-sm">Select a candidate to continue</p>
+                        </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {nominees.map((nominee) => (
-                                <div
-                                    key={nominee.id}
-                                    onClick={() => handleVote(nominee)}
-                                    className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-gray-100 hover:border-[#1a237e]/50 cursor-pointer transition-all duration-300 transform hover:-translate-y-1"
-                                >
-                                    {/* Image Area */}
-                                    <div className="bg-gray-200 h-56 w-full relative overflow-hidden">
-                                        {/* Placeholder for missing images */}
-                                        <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 opacity-50" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                                            </svg>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto pb-10">
+                            {nominees.map((nominee) => {
+                                const isSelected = selectedNomineeId === nominee.id;
+
+                                return (
+                                    <div
+                                        key={nominee.id}
+                                        onClick={() => setSelectedNomineeId(nominee.id)}
+                                        className={`group relative bg-white rounded-md overflow-hidden shadow-lg transition-all duration-300 border cursor-pointer ${isSelected ? "ring-4 ring-[#16a741] border-[#16a741] scale-[1.02]" : "border-purple-100 hover:shadow-xl"
+                                            }`}
+                                    >
+                                        {/* Image Container */}
+                                        <div className="relative h-40 md:h-72 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                                            {/* Placeholder/Actual Image Logic */}
+                                            {nominee.photo ? (
+                                                <Image
+                                                    src={nominee.photo} // Ensure backend/data has 'photo' or 'image'
+                                                    alt={nominee.name}
+                                                    className="w-full h-full object-top object-cover group-hover:scale-110 transition-transform duration-700"
+                                                    width={288}
+                                                    height={288}
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400 group-hover:scale-110 transition-transform duration-700">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 opacity-50" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                            )}
+
+                                            {/* Gradient Overlay */}
+                                            <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+
+                                            {/* Action Overlay */}
+                                            <div className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                                {isSelected ? (
+                                                    <motion.button
+                                                        initial={{ scale: 0 }}
+                                                        animate={{ scale: 1 }}
+                                                        whileTap={{ scale: 0.95 }}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleConfirmVote(nominee);
+                                                        }}
+                                                        className="bg-[#16a741] text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center gap-2 hover:bg-[#138e36] transition-colors"
+                                                    >
+                                                        <Check size={20} />
+                                                        CONFIRM
+                                                    </motion.button>
+                                                ) : (
+                                                    <div className="text-white font-bold tracking-widest border-2 border-white px-4 py-1 rounded-lg flex items-center gap-2">
+                                                        <MousePointerClick size={16} />
+                                                        SELECT
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className={`p-3 text-center relative transition-colors ${isSelected ? 'bg-green-50' : 'bg-white'}`}>
+                                            <h3 className={`text-[12px] md:text-[14px] uppercase poppins-bold md:mb-1 transition-colors ${isSelected ? 'text-[#16a741]' : 'text-gray-800 group-hover:text-[#16a741]'}`}>
+                                                {nominee.name}
+                                            </h3>
+                                            <p className="text-[10px] md:text-[12px] poppins-semibold text-gray-500 uppercase tracking-wider">
+                                                {currentPosition}
+                                            </p>
                                         </div>
                                     </div>
-
-                                    {/* Content */}
-                                    <div className="p-6 text-center">
-                                        <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#1a237e] mb-1 line-clamp-2 min-h-[3.5rem] flex items-center justify-center">
-                                            {nominee.name}
-                                        </h3>
-                                        <span className="inline-block px-3 py-1 bg-gray-50 text-gray-500 text-xs font-bold uppercase tracking-widest rounded-full">
-                                            {currentPosition}
-                                        </span>
-                                    </div>
-
-                                    {/* Hover Overlay */}
-                                    <div className="absolute inset-0 bg-[#1a237e]/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm">
-                                        <span className="text-white text-xl font-bold tracking-widest border-2 border-white px-6 py-2 rounded-lg">
-                                            VOTE
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </motion.div>
                 </AnimatePresence>
             </main>
 
             {/* Progress Dots */}
-            <div className="py-6 flex justify-center gap-2">
+            <div className="py-6 flex justify-center gap-2 bg-white/50 backdrop-blur-sm sticky bottom-0 border-t border-gray-200">
                 {POSITIONS.map((pos, idx) => (
                     <div
                         key={pos}
-                        className={`w-3 h-3 rounded-full transition-colors ${idx === currentPositionIndex ? "bg-[#1a237e]" : "bg-gray-300"
+                        className={`w-3 h-3 rounded-full transition-all duration-500 ${idx === currentPositionIndex ? "bg-[#16a741] w-8" : "bg-gray-300"
                             }`}
                     />
                 ))}
