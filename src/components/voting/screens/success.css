@@ -1,0 +1,76 @@
+.perspective-1200 {
+    perspective: 1200px;
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.rotate-x-70 {
+    transform: rotateX(70deg);
+}
+
+.rotate-x-0 {
+    transform: rotateX(0deg);
+}
+
+.shadow-inner-dark {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.shadow-surface {
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.paper-prepare {
+    opacity: 1;
+    animation: hoverPaper 1s infinite alternate ease-in-out;
+}
+
+.paper-drop {
+    opacity: 1;
+    /* Ensure visibility before drop */
+    animation: dropPhysics 1s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+}
+
+.box-shake {
+    animation: shakeBox 0.3s ease-in-out;
+}
+
+@keyframes hoverPaper {
+    from {
+        transform: translate(-50%, -150%) scale(1);
+    }
+
+    to {
+        transform: translate(-50%, -160%) scale(1);
+    }
+}
+
+@keyframes dropPhysics {
+    0% {
+        transform: translate(-50%, -150%) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 40%) rotate(5deg);
+        opacity: 0;
+    }
+}
+
+@keyframes shakeBox {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(2px);
+    }
+
+    75% {
+        transform: translateY(-2px);
+    }
+}

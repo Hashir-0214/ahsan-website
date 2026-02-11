@@ -1,0 +1,46 @@
+
+.ink-path {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+}
+
+.anim-brush-enter {
+    animation: brushEnter 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.anim-brush-draw {
+    animation: brushDrawUp 1.2s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.anim-ink-draw {
+    animation: inkReveal 1.2s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.anim-brush-exit {
+    animation: brushExit 0.6s ease-in forwards;
+}
+
+@keyframes brushEnter {
+    0% { transform: translate(-50px, 50px) rotate(0deg); opacity: 1; }
+    100% { transform: translate(80px, 130px) rotate(-45deg); opacity: 1; }
+}
+
+@keyframes brushDrawUp {
+    0% { transform: translate(80px, 130px) rotate(-45deg); }
+    100% { transform: translate(80px, -20px) rotate(-45deg); }
+}
+
+@keyframes inkReveal {
+    0% { stroke-dashoffset: 200; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes brushExit {
+    0% { transform: translate(80px, -20px) rotate(-45deg); opacity: 1; }
+    100% { transform: translate(200px, -100px) rotate(-45deg); opacity: 0; }
+}

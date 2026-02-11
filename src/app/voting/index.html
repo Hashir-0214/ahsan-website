@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AHSAN 2026-27 Committee Election</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #1a237e; /* Deep Blue */
+            --secondary: #c62828; /* Red for accents */
+            --accent: #ffd700; /* Gold */
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(#e2e6ea 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* --- UTILITIES --- */
+        .hidden { display: none !important; }
+        .flex-center { display: flex; justify-content: center; align-items: center; }
+        .full-screen { 
+            width: 100%; 
+            height: 100%; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            background: var(--bg); 
+            z-index: 10; 
+            overflow-y: auto; 
+        }
+        
+        /* Logo Styling */
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .logo-img-large {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+        .logo-text {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: white;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 300px;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .btn:active { transform: scale(0.97); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), #283593); color: white; }
+        .btn-danger { background: linear-gradient(135deg, #c62828, #e53935); color: white; }
+        
+        /* --- TOAST NOTIFICATIONS --- */
+        #toast-container {
+            position: fixed; top: 20px; right: 20px; left: 20px; z-index: 3000;
+            pointer-events: none;
+        }
+        .toast {
+            background: white; color: #333; padding: 16px 24px;
+            border-radius: 12px; margin-bottom: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex; align-items: center;
+            border-left: 5px solid var(--primary);
+            font-weight: 500;
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: auto;
+        }
+        @keyframes slideIn { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* --- 0. COUNTDOWN PAGE --- */
+        #countdown-page {
+            background: linear-gradient(135deg, #0d47a1, var(--primary));
+            color: white;
+            text-align: center;
+            flex-direction: column;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .timer-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 20px 10px;
+            border-radius: 12px;
+            min-width: 80px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .time-val {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .separator {
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.5;
+            margin-bottom: 25px;
+        }
+
+        .lock-msg {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        /* --- 1. INTRO PAGE --- */
+        #intro-page {
+            background: linear-gradient(135deg, #0d47a1, var(--primary));
+            color: white;
+            flex-direction: column;
+            text-align: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+            justify-content: flex-start;
+        }
+
+        .intro-content {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .election-subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 40px; font-weight: 500; }
+
+        .home-stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .home-stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            flex: 1 1 120px;
+            min-width: 100px;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .home-stat-box:hover { transform: translateY(-5px); background: rgba(255,255,255,0.25); }
+        .home-stat-num { display: block; font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+        .home-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; margin-top: 5px; }
+
+        /* --- CLASS STATS GRID (CENTERED) --- */
+        .class-stats-title {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0.9;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .class-stats-grid {
+            display: flex;
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .class-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 280px;
+            flex-shrink: 0; 
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .class-card:hover { transform: translateY(-5px); }
+        .class-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .class-name { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+        .class-pct { font-size: 1.2rem; font-weight: 700; color: var(--secondary); }
+        .class-details { display: flex; justify-content: space-between; font-size: 0.9rem; color: #666; margin-bottom: 10px; }
+        .progress-bg { width: 100%; height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #42a5f5); width: 0%; transition: width 1s ease-out; border-radius: 5px; }
+
+        /* --- 2. LOGIN PAGE --- */
+        #login-page { flex-direction: column; background: #fff; align-items: center; justify-content: center; padding: 20px; }
+        .login-card {
+            background: var(--card-bg); padding: 40px 30px; border-radius: 24px;
+            box-shadow: var(--shadow-soft); width: 100%; max-width: 400px; text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        .login-card h2 { color: var(--primary); margin-bottom: 25px; font-weight: 700; font-size: 1.5rem; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 0.9rem; margin-left: 5px; }
+        .input-group input {
+            width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 12px;
+            font-size: 1rem; outline: none; transition: all 0.3s; background: #fcfcfc;
+        }
+        .input-group input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(26,35,126,0.05); }
+        .admin-link { margin-top: 20px; font-size: 0.85rem; color: #888; cursor: pointer; font-weight: 500; transition: color 0.2s; display: inline-block; }
+        .admin-link:hover { color: var(--primary); text-decoration: underline; }
+        .password-hint { font-size: 0.75rem; color: #888; margin-bottom: 15px; font-style: italic; background: #f9f9f9; padding: 8px; border-radius: 6px; text-align: left; }
+
+        /* --- 2b. ADMIN AUTH PAGE --- */
+        #admin-auth-page { flex-direction: column; background: #263238; }
+        .auth-card { background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 340px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+
+        /* --- 3. INKING ANIMATION (IMPROVED) --- */
+        #inking-page { 
+            background: #263238; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            perspective: 1000px;
+        }
+        
+        .animation-container { 
+            width: 300px; 
+            height: 400px; 
+            position: relative; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Improved Finger SVG */
+        #finger-svg { 
+            width: 200px; 
+            height: 320px; 
+            z-index: 1;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+        }
+        
+        .finger-skin { fill: #ffccbc; }
+        .finger-shadow { fill: #e6b9a8; }
+        
+        /* The ink line that gets drawn */
+        .ink-path {
+            fill: none;
+            stroke: #000000; /* Ink Color */
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200; /* Start hidden */
+        }
+
+        /* Improved Brush SVG */
+        .brush-svg { 
+            width: 80px; 
+            height: 80px; 
+            position: absolute; 
+            z-index: 20; 
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            /* Initial Position (Bottom Left) */
+            left: 20px; 
+            top: 300px;
+            opacity: 0;
+        }
+
+        .inking-text { 
+            color: white; 
+            margin-top: 40px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            letter-spacing: 1px; 
+            opacity: 0; 
+        }
+
+        /* --- ANIMATION SEQUENCES --- */
+
+        /* 1. Brush enters, rotates, and moves to finger bottom */
+        .anim-brush-enter {
+            animation: brushEnter 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        
+        /* 2. Brush drags UP the finger, drawing the line */
+        .anim-brush-draw {
+            /* This animation syncs with the stroke drawing */
+            animation: brushDrawUp 1.2s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+        }
+
+        /* 3. Stroke appears */
+        .anim-ink-draw {
+            animation: inkReveal 1.2s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+        }
+
+        /* 4. Brush exits */
+        .anim-brush-exit {
+            animation: brushExit 0.6s ease-in forwards;
+        }
+        
+        /* 5. Text Fade */
+        .anim-text-fade {
+            animation: fadeInText 0.8s ease forwards;
+        }
+
+        @keyframes brushEnter {
+            0% { transform: translate(-50px, 50px) rotate(0deg); opacity: 1; }
+            100% { transform: translate(80px, 130px) rotate(-45deg); opacity: 1; } /* Position at bottom of finger */
+        }
+
+        @keyframes brushDrawUp {
+            0% { transform: translate(80px, 130px) rotate(-45deg); }
+            100% { transform: translate(80px, -20px) rotate(-45deg); } /* Position at top of finger */
+        }
+
+        @keyframes inkReveal {
+            0% { stroke-dashoffset: 200; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes brushExit {
+            0% { transform: translate(80px, -20px) rotate(-45deg); opacity: 1; }
+            100% { transform: translate(200px, -100px) rotate(-45deg); opacity: 0; }
+        }
+
+        @keyframes fadeInText { to { opacity: 1; } }
+
+
+        /* --- 4. VOTING PAGES --- */
+        #voting-page { padding: 20px; padding-top: 80px; overflow-y: auto; background: var(--bg); min-height: 100vh; }
+        
+        .header { 
+            display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; 
+            background: white; position: fixed; top: 0; left: 0; right: 0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100; height: 70px;
+            flex-wrap: wrap; 
+        }
+        .header-logo { display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+        .header-logo-img { height: 32px; width: auto; }
+        
+        .user-info { 
+            font-weight: 700; color: var(--primary); font-size: 0.95rem; background: #e8eaf6; 
+            padding: 8px 12px; border-radius: 20px; white-space: normal; text-align: right;
+            max-width: 50%; line-height: 1.2;
+        }
+        
+        .position-title { text-align: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 30px; font-weight: 800; letter-spacing: -0.5px; margin-top: 10px; }
+        
+        .nominees-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding-bottom: 80px;
+        }
+        .nominee-card {
+            background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer; border: 1px solid #eee; position: relative;
+            display: flex; flex-direction: column;
+        }
+        .nominee-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--primary); }
+        .nominee-img { width: 100%; height: 220px; object-fit: cover; background: #f0f2f5; border-bottom: 1px solid #f0f0f0; }
+        .nominee-info { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        
+        .nominee-name { 
+            font-size: 1.35rem; font-weight: 700; color: #222; margin-bottom: 5px; line-height: 1.3; 
+            white-space: normal; word-wrap: break-word;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            min-height: 3.5rem; 
+        }
+        
+        .nominee-role { font-size: 0.85rem; color: #777; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; margin-top: 5px;}
+        
+        .vote-btn-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 35, 126, 0.9); color: white;
+            display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: 800;
+            opacity: 0; transition: opacity 0.2s; backdrop-filter: blur(2px);
+        }
+        .nominee-card:hover .vote-btn-overlay, .nominee-card:active .vote-btn-overlay { opacity: 1; }
+
+        /* --- 5. SUCCESS / PAPER DROP (IMPROVED) --- */
+        #success-page { 
+            background: #e3f2fd; 
+            position: relative; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            perspective: 1200px; /* Enhance 3D */
+        }
+        
+        .table-surface { 
+            width: 100%; height: 180px; background: #a1887f; position: absolute; bottom: 0; left: 0; 
+            border-top: 10px solid #795548; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); z-index: 1; 
+        }
+        
+        .ballot-box { 
+            width: 220px; height: 260px; position: relative; z-index: 10;
+            transform-style: preserve-3d;
+        }
+
+        /* The Main Box Body */
+        .box-body { 
+            width: 100%; height: 210px; background: #37474f; border: 4px solid #263238; 
+            border-radius: 8px; position: absolute; bottom: 0; 
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 10px 20px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center;
+            overflow: visible; 
+        }
+        
+        /* The Lid - Improved 3D */
+        .box-lid { 
+            width: 110%; height: 60px; background: #455a64; border: 4px solid #263238; border-bottom: none; 
+            border-radius: 8px 8px 0 0; position: absolute; top: -45px; left: -5%; 
+            transform-origin: bottom center; 
+            transform: rotateX(0deg);
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); 
+            z-index: 20;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .box-lid.open {
+            transform: rotateX(70deg); 
+        }
+
+        /* The Slot */
+        .box-slot { 
+            width: 70%; height: 8px; background: #000; position: absolute; top: 5px; left: 15%; 
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8); border-radius: 4px;
+        }
+
+        /* The Paper */
+        .paper { 
+            width: 100px; height: 140px; background: white; border: 1px solid #ddd; 
+            position: absolute; top: 50%; left: 50%; 
+            transform: translate(-50%, -150%) scale(1); 
+            z-index: 15; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
+            display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; color: var(--secondary); font-size: 1rem;
+            border-radius: 4px;
+            opacity: 0; 
+        }
+        
+        /* Animation Classes */
+        .paper-prepare {
+            opacity: 1;
+            animation: hoverPaper 1s infinite alternate ease-in-out;
+        }
+
+        .paper-drop {
+            animation: dropPhysics 1s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+        }
+
+        .box-shake {
+            animation: shakeBox 0.3s ease-in-out;
+        }
+
+        @keyframes hoverPaper {
+            from { transform: translate(-50%, -150%) scale(1); }
+            to { transform: translate(-50%, -160%) scale(1); }
+        }
+
+        @keyframes dropPhysics {
+            0% { transform: translate(-50%, -150%) rotate(0deg); opacity: 1; }
+            100% { transform: translate(-50%, 40%) rotate(5deg); opacity: 0; } 
+        }
+        
+        @keyframes shakeBox {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(2px); }
+            75% { transform: translateY(-2px); }
+        }
+
+        .thanks-msg { 
+            position: absolute; top: 20%; width: 100%; text-align: center; font-size: 2.5rem; 
+            color: var(--primary); font-weight: 900; opacity: 0; 
+            animation: fadeInThanks 0.8s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
+            z-index: 30; text-shadow: 0 2px 0 rgba(255,255,255,0.5); padding: 0 20px; 
+        }
+        @keyframes fadeInThanks { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* --- 6. ADMIN DASHBOARD --- */
+        #admin-page { padding: 20px; background: #f4f6f8; overflow-y: auto; min-height: 100vh; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px; }
+        
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid var(--primary); }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--primary); margin: 5px 0; }
+        .stat-label { color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .nom-stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .nom-stat-card h3 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 15px; color: var(--primary); font-size: 1.2rem; }
+        .stat-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f9f9f9; font-weight: 600; font-size: 0.9rem; }
+        .stat-bar-bg { width: 100%; height: 8px; background: #f0f0f0; border-radius: 4px; margin-top: 5px; overflow: hidden; }
+        .stat-bar-fill { height: 100%; background: var(--primary); width: 0%; transition: width 1s ease-out; }
+        
+        .reset-section { text-align: center; padding: 20px; background: #ffebee; border-radius: 12px; border: 1px solid #ffcdd2; margin-bottom: 40px; }
+        
+        .voters-list-container { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-height: 300px; overflow-y: auto; border: 1px solid #eee; margin-bottom: 20px; }
+        .voter-row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; align-items: center; }
+        .voter-row:last-child { border-bottom: none; }
+        .list-header { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; margin-bottom: 10px; }
+        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; }
+        .status-voted { background-color: #e8f5e9; color: #2e7d32; }
+        .status-pending { background-color: #ffebee; color: #c62828; }
+
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid var(--primary); border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* Responsive Fixes */
+        @media (min-width: 768px) { .btn { width: auto; } #voting-page { padding-top: 30px; } }
+        
+        @media (max-width: 600px) {
+            .class-card { width: 100%; }
+            .header { height: auto; padding-bottom: 10px; }
+            .header-logo { width: 100%; justify-content: center; margin-bottom: 5px; }
+            .user-info { width: 100%; text-align: center; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- 0. COUNTDOWN PAGE -->
+    <section id="countdown-page" class="full-screen flex-center hidden">
+        <div class="brand-logo">
+            <img src="./img/logo.png" alt="AHSAN Logo" class="logo-img-large">
+            <div class="logo-text">AHSAN</div>
+        </div>
+        
+        <div class="countdown-container">
+            <h2 class="countdown-title">Voting Opens In</h2>
+            
+            <div class="timer-grid">
+                <div class="time-box">
+                    <span class="time-val" id="cd-hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-box">
+                    <span class="time-val" id="cd-mins">00</span>
+                    <span class="time-label">Mins</span>
+                </div>
+                <div class="separator">:</div>
+                <div class="time-box">
+                    <span class="time-val" id="cd-secs">00</span>
+                    <span class="time-label">Secs</span>
+                </div>
+            </div>
+            
+            <div class="lock-msg">Polling starts at 03:00 PM</div>
+        </div>
+    </section>
+
+    <!-- 1. INTRO PAGE -->
+    <section id="intro-page" class="full-screen flex-center hidden">
+        <div class="intro-content">
+            <div class="brand-logo">
+                <img src="./img/logo.png" alt="AHSAN Logo" class="logo-img-large">
+                <div class="logo-text">AHSAN</div>
+            </div>
+            <p class="election-subtitle">2026 - 27 Committee Election</p>
+
+            <div class="home-stats-container">
+                <div class="home-stat-box">
+                    <span class="home-stat-num" id="home-total">0</span>
+                    <span class="home-stat-label">Total Students</span>
+                </div>
+                <div class="home-stat-box">
+                    <span class="home-stat-num" id="home-voted">0</span>
+                    <span class="home-stat-label">Votes Cast</span>
+                </div>
+                <div class="home-stat-box">
+                    <span class="home-stat-num" id="home-waiting">0</span>
+                    <span class="home-stat-label">Not Voted</span>
+                </div>
+            </div>
+
+            <div class="class-stats-title">Class Wise Live Updates</div>
+            <div class="class-stats-grid" id="class-stats-container">
+                <!-- JS will inject cards here -->
+            </div>
+
+            <button class="btn" style="background: var(--accent); color: var(--primary);" onclick="app.goToLogin()">Start Voting</button>
+        </div>
+    </section>
+
+    <!-- 2. VOTER LOGIN PAGE -->
+    <section id="login-page" class="full-screen flex-center hidden">
+        <div class="login-card">
+            <img src="./img/logo.png" alt="Logo" style="width: 60px; margin-bottom: 15px;">
+            <h2>Voter Login</h2>
+            <div class="input-group">
+                <label for="voterId">Voter ID</label>
+                <input type="number" id="voterId" placeholder="e.g., 1050" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="voterPass">Password</label>
+                <input type="password" id="voterPass" placeholder="First 4 letters of Name + DOB">
+                <div class="password-hint">Format: First 4 letters of Name + DDMMYYYY</div>
+            </div>
+            <button class="btn btn-primary" onclick="app.verifyVoter()">Verify & Vote</button>
+            <div class="spinner hidden" id="login-spinner"></div>
+            <br>
+            <p class="admin-link" onclick="app.goToAdminAuth()">Admin Panel</p>
+        </div>
+    </section>
+
+    <!-- 2b. ADMIN AUTH PAGE -->
+    <section id="admin-auth-page" class="full-screen flex-center hidden">
+        <div class="auth-card">
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Admin Login</h2>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="adminUser" placeholder="Enter username">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="adminPass" placeholder="Enter password">
+            </div>
+            <button class="btn btn-primary" style="width: 100%" onclick="app.verifyAdmin()">Login</button>
+            <button class="btn" style="width: 100%; margin-top: 15px; background: #ddd; color: #333;" onclick="app.goToIntro()">Back</button>
+        </div>
+    </section>
+
+    <!-- 3. INKING ANIMATION -->
+    <section id="inking-page" class="full-screen hidden">
+        <div class="animation-container">
+            <!-- Improved Finger SVG -->
+            <svg id="finger-svg" viewBox="0 0 200 320">
+                <defs>
+                    <filter id="shadow-f" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                        <feOffset dx="2" dy="4" result="offsetblur"/>
+                        <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.3"/>
+                        </feComponentTransfer>
+                        <feMerge> 
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/> 
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Finger Body -->
+                <path d="M50,40 Q50,220 60,240 L140,240 Q150,220 150,40 L130,15 L70,15 Z" fill="#ffccbc" filter="url(#shadow-f)" />
+                <!-- Nail -->
+                <path d="M85,20 L115,20 Q125,25 120,40 L80,40 Q75,25 85,20" fill="#fff0e6" stroke="#eebfae" stroke-width="1"/>
+                <!-- Creases -->
+                <path d="M55,190 L145,190" stroke="#e6b9a8" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+                <path d="M60,215 L140,215" stroke="#e6b9a8" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+                <!-- The Ink Line (Center) -->
+                <line x1="100" y1="230" x2="100" y2="30" class="ink-path" id="ink-path" />
+            </svg>
+            
+            <!-- Improved Brush SVG -->
+            <svg class="brush-svg" id="brush-anim" viewBox="0 0 100 100">
+                <!-- Handle -->
+                <rect x="35" y="10" width="30" height="90" rx="4" fill="#333" />
+                <!-- Metal Ferrule -->
+                <rect x="30" y="15" width="40" height="20" fill="#aaa" />
+                <!-- Bristles -->
+                <path d="M35,35 L65,35 L60,90 L40,90 Z" fill="#f5f5f5" stroke="#ddd" stroke-width="1" />
+                <!-- Ink Tip -->
+                <path d="M45,35 L55,35 L52,42 L48,42 Z" fill="#000" />
+            </svg>
+        </div>
+        <p class="inking-text" id="inking-status">Marking Voter...</p>
+    </section>
+
+    <!-- 4. VOTING PAGE -->
+    <section id="voting-page" class="full-screen hidden">
+        <div class="header">
+            <div class="header-logo">
+                <img src="./img/logo.png" alt="Logo" class="header-logo-img">
+                <span>AHSAN</span>
+            </div>
+            <div class="user-info">Voter: <span id="display-voter-name">Guest</span></div>
+        </div>
+<br><br>
+        <h2 class="position-title" id="position-title">President</h2>
+
+        <div class="nominees-grid" id="nominees-container">
+            <!-- Cards injected by JS -->
+        </div>
+    </section>
+
+    <!-- 5. SUCCESS / THANKS PAGE -->
+    <section id="success-page" class="full-screen hidden">
+        <h1 class="thanks-msg">THANK YOU!</h1>
+        
+        <div class="ballot-box">
+            <!-- Paper is absolutely positioned relative to the ballot box for easy coordination -->
+            <div class="paper" id="vote-paper">VOTE</div>
+            
+            <div class="box-lid" id="box-lid">
+                <div class="box-slot"></div>
+            </div>
+            <div class="box-body" id="box-body"></div>
+        </div>
+        
+        <div class="table-surface"></div>
+    </section>
+
+    <!-- 6. ADMIN PAGE -->
+    <section id="admin-page" class="full-screen hidden">
+        <div class="admin-header">
+            <h2>Admin Dashboard</h2>
+            <button class="btn btn-primary" onclick="app.goToIntro()">Logout</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Students</div>
+                <div class="stat-number" id="stat-total">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Voted</div>
+                <div class="stat-number" id="stat-voted" style="color: var(--secondary);">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Waiting</div>
+                <div class="stat-number" id="stat-waiting" style="color: #43a047;">0</div>
+            </div>
+        </div>
+
+        <h3>Live Results</h3>
+        <div class="stats-container" id="admin-stats"></div>
+
+        <div class="list-header">
+            <h3 style="color: var(--primary);">Voted Students</h3>
+            <span class="status-badge status-voted" id="count-voted-badge">0</span>
+        </div>
+        <div class="voters-list-container" id="voted-list"></div>
+
+        <div class="list-header">
+            <h3 style="color: #c62828;">Pending Students</h3>
+            <span class="status-badge status-pending" id="count-pending-badge">0</span>
+        </div>
+        <div class="voters-list-container" id="pending-list"></div>
+
+        <div class="reset-section">
+            <h3 style="color: var(--secondary); margin-bottom: 10px;">Danger Zone</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem;">This will reset ALL vote counts and allow all voters to vote again.</p>
+            <button class="btn btn-danger" onclick="app.resetElection()">Reset All Data</button>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script>
+        // --- 1. FIREBASE CONFIG ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEfQv3XYO2_81RutRrI0HN959dXyTIXQ0",
+            authDomain: "evm-ahsan.firebaseapp.com",
+            databaseURL: "https://evm-ahsan-default-rtdb.firebaseio.com",
+            projectId: "evm-ahsan",
+            storageBucket: "evm-ahsan.firebasestorage.app",
+            messagingSenderId: "300478736352",
+            appId: "1:300478736352:web:c76a7ed0e65f7548372d85",
+            measurementId: "G-VDWJL8CL7S"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // --- 2. DATA CONFIGURATION ---
+        const POSITIONS = ['president', 'secretary', 'treasurer'];
+        const NOMINEES = {
+            president: [
+                { id: 'p1', name: 'Sayyid Saloom KK', photo: './img/salu.jpg' },
+                { id: 'p2', name: 'Ahammed Sadeed T', photo: './img/sidu.jpg' },
+                { id: 'p3', name: 'Muddassir Sinan MK', photo: './img/mudu.jpeg' }
+            ],
+            secretary: [
+                { id: 's1', name: 'Muhammed Salim MK', photo: './img/salimu.jpg' },
+                { id: 's2', name: 'Muhammed Rishab KM', photo: './img/rishu.jpg' },
+                { id: 's3', name: 'Muhammed Thanseeh PK', photo: './img/tanu.jpg' }
+            ],
+            treasurer: [
+                { id: 't1', name: 'Muhammed Sabith MT', photo: './img/sabi.jpg' },
+                { id: 't2', name: 'Muhammed Jasir AV', photo: './img/jasu.jpg' },
+                { id: 't3', name: 'Muhammed Sabith M', photo: './img/sabi1.jpg' }
+            ]
+        };
+
+        // --- 3. CLASS ROSTER ---
+        const CLASS_ROSTER = {
+            'SS1': [1089, 1059, 1053, 1061, 1084, 1024, 1066, 1064, 1088, 1086, 1063, 1013, 1072, 1074, 1051, 1073, 1040, 1050, 1090, 1075, 1058, 1008, 1076, 1070, 1085, 1078, 1082, 1056, 1087, 1068, 1014, 1071].map(String),
+            'SS2': [1004, 1005, 1006, 1010, 1012, 1016, 1018, 1019, 1021, 1022, 1023, 1025, 1026, 1028, 1030, 1031, 1033, 1035, 1036, 1037, 1038, 1039, 1041, 1168, 1211, 1223, 1255, 1257, 970, 975, 998].map(String),
+            'D1': [1091, 926, 949, 954, 957, 959, 960, 961, 963, 965, 966, 968, 969, 971, 972, 973, 974, 978, 979, 982, 983, 984, 986, 987, 988, 989, 991, 992, 994, 995, 996].map(String),
+            'D2': [1213, 1214, 1215, 1216, 1217, 1218, 1219, 1220, 1221, 873, 896, 911, 912, 914, 915, 916, 917, 918, 919, 921, 922, 923, 927, 929, 931, 932, 933, 934, 935, 936, 937, 938, 939, 940, 942, 943, 946, 951, 952, 953].map(String),
+            'D3': [1000, 1173, 1174, 1175, 1254, 863, 866, 868, 869, 870, 871, 872, 874, 875, 876, 877, 879, 880, 881, 882, 884, 885, 886, 887, 888, 889, 890, 891, 892, 899, 900, 901, 902, 904, 905, 956].map(String)
+        };
+
+        const VOTERS = {
+          "1050": { name: "MUHAMMAD SINAN PC", dob: "25-07-2010" },
+          "1070": { name: "MUHAMMED MUSAMMIL B K", dob: "03-09-2009" },
+          "1074": { name: "MUAD .M.", dob: "03-06-2010" },
+          "1058": { name: "MUHAMMED JALAL AT", dob: "04-08-2009" },
+          "1051": { name: "MUHAMMAD HISHAM T", dob: "23-07-2009" },
+          "1056": { name: "MUHAMMED SHADIN N.M.", dob: "14-07-2010" },
+          "1076": { name: "MUHAMMED MINHAJ KK", dob: "03-05-2010" },
+          "1071": { name: "SAYYID MOHAMMAD ZUHAIR A K", dob: "11-02-2011" },
+          "1075": { name: "MUHAMMED HASHIM P", dob: "19-02-2011" },
+          "1061": { name: "ANSHID M P", dob: "27-05-2010" },
+          "1072": { name: "MOHAMMED SINAN TP", dob: "25-07-2010" },
+          "1078": { name: "MUHAMMED RABIEUE MK", dob: "22-11-2010" },
+          "1088": { name: "MOHAMMED NAEEM K", dob: "21-12-2010" },
+          "1082": { name: "MUHAMMED SANEEN", dob: "08-07-2010" },
+          "1090": { name: "MUHAMMED BASSAM", dob: "30-08-2010" },
+          "1066": { name: "HASHIM MOHAMMED K P", dob: "19-09-2009" },
+          "1063": { name: "MOHAMMED RISHADH. T", dob: "11-09-2009" },
+          "1073": { name: "MUHAMMAD MUSTHAFA KK", dob: "07-08-2009" },
+          "1068": { name: "MUHAMMED UVAIS.EK", dob: "11-09-2010" },
+          "1053": { name: "AMEEN T", dob: "31-05-2010" },
+          "1040": { name: "MUHAMMAD RIFAD K", dob: "08-10-2009" },
+          "1059": { name: "AFSAL", dob: "11-02-2010" },
+          "1064": { name: "MOHAMED SHAMIL M", dob: "19-10-2010" },
+          "1013": { name: "MOHAMMED SAHAD.K", dob: "23-02-2010" },
+          "1087": { name: "MUHAMMED SHAMIL. A", dob: "14-10-2010" },
+          "1089": { name: "ADIL SHAH M", dob: "13-10-2010" },
+          "1084": { name: "ASIM MOHAMED M", dob: "19-03-2011" },
+          "1024": { name: "FADHIL KATTIPARUTHI", dob: "23-08-2009" },
+          "1008": { name: "MUHAMMED MINHAJ", dob: "17-08-2009" },
+          "1086": { name: "MOHAMMED NIDAL", dob: "28-07-2010" },
+          "1085": { name: "MUHAMMED NAFIH", dob: "18-04-2011" },
+          "1014": { name: "MURSHID MK", dob: "03-04-2010" },
+          "1022": { name: "MUHAMMAD NASEEF K", dob: "11-02-2009" },
+          "970": { name: "ABDUL BASIT PARAMBADEN", dob: "16-06-2007" },
+          "1035": { name: "MUHAMMED SABEEH MK", dob: "05-01-2010" },
+          "1012": { name: "MOHAMMED RUBAIB O P", dob: "27-05-2009" },
+          "1038": { name: "MUHAMMAD SALIM KP", dob: "16-06-2009" },
+          "1168": { name: "MOHAMMED HITHBAN P", dob: "14-03-2010" },
+          "1211": { name: "MUHAMMAD MUNAVVAR", dob: "08-07-2008" },
+          "1010": { name: "SHABEER ALI P.V", dob: "11-08-2009" },
+          "1037": { name: "MUHAMMAD SHIFIN", dob: "10-10-2009" },
+          "1023": { name: "ABDUL BASITH KK", dob: "30-06-2009" },
+          "1025": { name: "MUHAMMED ASLAH", dob: "20-08-2009" },
+          "1005": { name: "MUHAMMAD SINAN.MK", dob: "15-07-2008" },
+          "1031": { name: "MUHAMMED SAHAL N", dob: "16-06-2008" },
+          "1041": { name: "MUHAMMED SHAMMAS. M", dob: "18-07-2009" },
+          "1033": { name: "MUHAMMED SHAJEEH", dob: "08-08-2008" },
+          "1016": { name: "ABDUL NAFIH", dob: "28-03-2010" },
+          "998": { name: "MUHAMMED RINSHAD P", dob: "14-05-2009" },
+          "1030": { name: "NIHAL ABOOBACKER", dob: "28-04-2009" },
+          "1028": { name: "SHINAS MOHAMED", dob: "05-04-2010" },
+          "1019": { name: "MOHAMMED IHSAN C", dob: "18-08-2009" },
+          "1036": { name: "SABEEH AHMED. N. K.", dob: "24-10-2009" },
+          "975": { name: "MUHAMMED SANIH", dob: "23-05-2009" },
+          "1026": { name: "MUHAMMED RABEEH. T", dob: "21-03-2010" },
+          "1021": { name: "AHMED JURAIJ KT", dob: "12-11-2009" },
+          "1018": { name: "MUHAMMED AJUMAL", dob: "08-07-2008" },
+          "1006": { name: "AFLAH AHAMED C", dob: "07-11-2008" },
+          "1004": { name: "MUHAMMED VASIL C.S", dob: "10-07-2008" },
+          "1039": { name: "SALMAN NASOOH", dob: "29-10-2009" },
+          "1223": { name: "MUHAMMED FAHEEM", dob: "24-10-2008" },
+          "1255": { name: "FINAN", dob: "27-01-2009" },
+          "1257": { name: "FAIZAN", dob: "24-10-2008" },
+          "983": { name: "MAUROOF K", dob: "31-12-2007" },
+          "957": { name: "MUHAMMED MASHHOOD. P", dob: "06-01-2009" },
+          "972": { name: "MUHAMMED SWABEEH V P", dob: "21-10-2008" },
+          "996": { name: "ABDUL RAHMAN", dob: "17-05-2008" },
+          "973": { name: "MOHAMMED SHAHEEM PK", dob: "21-07-2008" },
+          "989": { name: "MOHAMMED JASIR AV", dob: "28-12-2008" },
+          "979": { name: "MUSTHAFA NAZIM K", dob: "22-04-2008" },
+          "974": { name: "MOHAMMED HARSHAD", dob: "16-01-2008" },
+          "963": { name: "MUHAMMAD DHANISH", dob: "11-06-2008" },
+          "965": { name: "MUHAMMAD SABITH", dob: "16-04-2009" },
+          "991": { name: "MOHAMMEDUL KHAIR AP", dob: "25-04-2008" },
+          "971": { name: "MUHAMMED SINAN PA", dob: "19-06-2008" },
+          "1091": { name: "MUHAMMED HISHAM", dob: "21-04-2009" },
+          "966": { name: "AHAMMED RAMI P", dob: "02-04-2008" },
+          "984": { name: "MOHAMMED SUHAIL P", dob: "29-01-2008" },
+          "994": { name: "MUHAMMED SABITH M", dob: "09-03-2008" },
+          "959": { name: "MUHAMMED IJLAN", dob: "28-06-2008" },
+          "986": { name: "MOHAMMED ANSHID P", dob: "14-04-2008" },
+          "960": { name: "MUHAMMED MUSTHAFA", dob: "02-12-2008" },
+          "961": { name: "SAYYED HAMID SABEEL", dob: "26-05-2008" },
+          "982": { name: "MUHAMMED JUNAID", dob: "27-05-2008" },
+          "949": { name: "MUHAMMED SIRAS", dob: "11-11-2006" },
+          "992": { name: "MOHAMMED MUNEEF P P", dob: "11-10-2008" },
+          "987": { name: "LABEEB K M", dob: "27-04-2009" },
+          "988": { name: "MOHAMMED MUSSAMMIL. K. C", dob: "04-07-2007" },
+          "995": { name: "MUHAMMED ADHIL FARAH", dob: "15-09-2008" },
+          "926": { name: "FASEEH AHMED", dob: "05-06-2007" },
+          "969": { name: "MUHAMMED IBRAHEEM V", dob: "14-03-2008" },
+          "968": { name: "MUHAMMED AFLAH T P", dob: "12-05-2009" },
+          "978": { name: "ABDUL BASITH A", dob: "19-12-2007" },
+          "954": { name: "FUHAD AHAMMED", dob: "05-11-2007" },
+          "939": { name: "MUHAMMED SHABEEB PM", dob: "18-12-2006" },
+          "932": { name: "MOHAMMED RISHAB KM", dob: "28-12-2006" },
+          "931": { name: "MUHAMMAD ALI RINSHID AV", dob: "16-10-2007" },
+          "1214": { name: "JASIR ALI VP", dob: "26-05-2007" },
+          "922": { name: "MUHAMMED ANSHID M", dob: "27-01-2008" },
+          "934": { name: "FOUZ IBRAHIM UP", dob: "05-10-2007" },
+          "1220": { name: "AHMED FAYAS CA", dob: "24-09-2007" },
+          "917": { name: "MOHAMED FAYIZ PK", dob: "09-06-2007" },
+          "940": { name: "SAYYID THAFHEEM VT", dob: "01-02-2007" },
+          "933": { name: "MUJTHABA MINHAJ", dob: "28-11-2006" },
+          "929": { name: "MOHAMED THANSEEH PK", dob: "06-01-2007" },
+          "942": { name: "FARIS P", dob: "08-06-2007" },
+          "918": { name: "IBRAHEEM BAHADOORSHA", dob: "13-02-2008" },
+          "946": { name: "MUHAMMED ZIYAD K", dob: "17-10-2007" },
+          "896": { name: "MUHAMMED SHADIL", dob: "24-02-2007" },
+          "915": { name: "MUHAMMAD JINSHAD VP", dob: "01-05-2008" },
+          "951": { name: "MUHAMMED MINHAJ PP", dob: "02-08-2007" },
+          "935": { name: "SALMAN FARIS TP", dob: "05-08-2006" },
+          "943": { name: "MOHAMED SHAMVEEL", dob: "30-03-2008" },
+          "914": { name: "MUHAMMED ARSHAD MK", dob: "22-05-2008" },
+          "923": { name: "MOHAMMED SINAN NK", dob: "14-08-2007" },
+          "911": { name: "MUHAMMED ANSARI KC", dob: "16-07-2006" },
+          "1221": { name: "SHIFIN MUHAMMED C", dob: "15-08-2007" },
+          "916": { name: "MUHAMED SALIH M", dob: "27-07-2007" },
+          "1216": { name: "MOHAMMED SINAN T", dob: "16-05-2007" },
+          "912": { name: "MUHAMMED MUNAVIR MP", dob: "01-10-2006" },
+          "952": { name: "MUHAMMED SALIM MK", dob: "26-12-2006" },
+          "1215": { name: "MUHAMMED SWALIH", dob: "23-10-2007" },
+          "1217": { name: "MUHAMMED BADUSHA VC", dob: "24-03-2008" },
+          "927": { name: "MUHAMMED SHAN K", dob: "20-07-2006" },
+          "1213": { name: "MUHAMMED NADIM KK", dob: "23-05-2007" },
+          "1218": { name: "MUHAMMED JABIR", dob: "03-10-2007" },
+          "953": { name: "MOHAMED RIFATH", dob: "23-06-2007" },
+          "938": { name: "RAIHAN TN", dob: "28-07-2007" },
+          "1219": { name: "MUHAMMED AFNAN PK", dob: "13-01-2007" },
+          "921": { name: "AMAL SHAJAS KT", dob: "11-08-2007" },
+          "937": { name: "MUHAMMED AFSAL", dob: "27-08-2007" },
+          "919": { name: "MUHAMMED MAZIN RK", dob: "14-11-2006" },
+          "936": { name: "RADHIN MOHAMMED P", dob: "27-01-2008" },
+          "873": { name: "HAZEEB", dob: "10-09-2005" },
+          "1174": { name: "MUDDASSIR SIDDIQUE M K", dob: "02-01-2006" },
+          "868": { name: "MUHAMMED LABEEB", dob: "14-11-2005" },
+          "876": { name: "MUHAMMED HAFEEF", dob: "23-02-2007" },
+          "875": { name: "AHAMMED SADEED", dob: "25-10-2006" },
+          "881": { name: "MUHAMMED SWALIH", dob: "20-12-2006" },
+          "1175": { name: "MUHAMMED SWABEEH AK", dob: "30-05-2006" },
+          "884": { name: "MUHAMMED ASEEL", dob: "06-10-2006" },
+          "904": { name: "SANAD M", dob: "19-07-2005" },
+          "956": { name: "ALI AFNAN P", dob: "13-07-2006" },
+          "905": { name: "SAHAL", dob: "23-08-2006" },
+          "890": { name: "MUHAMMED ALTHAF", dob: "26-12-2005" },
+          "902": { name: "MUHAMMED ASHIQ MON", dob: "27-07-2005" },
+          "899": { name: "ABDULLA LABEEB", dob: "07-12-2005" },
+          "889": { name: "MUHAMMED ADNAN KC", dob: "16-12-2006" },
+          "872": { name: "AHAMMED", dob: "25-05-2007" },
+          "863": { name: "MUHAMMED BAHJATH HUSSAIN", dob: "18-09-2005" },
+          "877": { name: "MUHAMMED ADNAN A", dob: "09-12-2006" },
+          "901": { name: "MUHAMMED SAHAD", dob: "19-09-2006" },
+          "888": { name: "MUHAMMED SHIBLI", dob: "24-05-2007" },
+          "1173": { name: "ASHMIL ASHRAF K", dob: "01-11-2005" },
+          "886": { name: "SAYYID SALOOM", dob: "25-09-2006" },
+          "874": { name: "HIDHAN MUHAMMED", dob: "29-10-2005" },
+          "880": { name: "MUHAMMED BUJAIR CK", dob: "26-04-2007" },
+          "885": { name: "MUHAMMED ASHMAL", dob: "30-12-2005" },
+          "871": { name: "SHIMAS AHMED", dob: "11-03-2006" },
+          "882": { name: "MUHAMMED ANSHID", dob: "12-05-2007" },
+          "869": { name: "MUHAMMED SHIFAN", dob: "21-10-2005" },
+          "887": { name: "MUHAMMED RASHAD", dob: "23-12-2005" },
+          "870": { name: "MUHAMMED SHIBLI M", dob: "12-06-2006" },
+          "879": { name: "MUHAMMED JUNAID", dob: "08-07-2005" },
+          "1000": { name: "RABEEB CT", dob: "26-07-2006" },
+          "866": { name: "AHAMMED HASHIR TK", dob: "04-03-2006" },
+          "900": { name: "MUHAMMED FAYIS", dob: "02-01-2007" },
+          "892": { name: "BUJAIR SABIN", dob: "26-11-2005" },
+          "891": { name: "UMARUL FAROOK", dob: "13-09-2005" },
+          "1254": { name: "MOHAMED ROSHEN", dob: null }
+        };
+
+        let currentVoter = null;
+        let currentStepIndex = 0;
+
+        // --- 4. AUDIO ENGINE ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playTone(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.1);
+            } else if (type === 'success') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.5);
+            }
+        }
+
+        function showToast(msg, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.borderLeft = type === 'error' ? '5px solid #f44336' : '5px solid #4caf50';
+            toast.textContent = msg;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        // --- TIME CHECKER LOGIC ---
+        function checkElectionTime() {
+            const now = new Date();
+            const target = new Date();
+            
+            // Set target to Today's 3 PM (15:00:00)
+            target.setHours(15, 0, 0, 0);
+
+            if (now >= target) {
+                // Voting is OPEN
+                // Go directly to Login Page as requested
+                app.goToLogin();
+            } else {
+                // Voting is LOCKED
+                // Show Countdown
+                switchPage('countdown-page');
+                startCountdown(target);
+            }
+        }
+
+        let countdownInterval;
+
+        function startCountdown(targetTime) {
+            const hEl = document.getElementById('cd-hours');
+            const mEl = document.getElementById('cd-mins');
+            const sEl = document.getElementById('cd-secs');
+
+            function update() {
+                const now = new Date();
+                const diff = targetTime - now;
+
+                if (diff <= 0) {
+                    clearInterval(countdownInterval);
+                    app.goToLogin();
+                    return;
+                }
+
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                hEl.textContent = String(hours).padStart(2, '0');
+                mEl.textContent = String(minutes).padStart(2, '0');
+                sEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            update();
+            countdownInterval = setInterval(update, 1000);
+        }
+
+        const app = {
+            goToLogin: () => {
+                if(countdownInterval) clearInterval(countdownInterval);
+                switchPage('login-page');
+            },
+            goToAdminAuth: () => switchPage('admin-auth-page'),
+            goToIntro: () => {
+                switchPage('intro-page');
+                app.loadHomeStats();
+            },
+
+            loadHomeStats: () => {
+                const totalStudents = Object.keys(VOTERS).length;
+                document.getElementById('home-total').textContent = totalStudents;
+
+                const classContainer = document.getElementById('class-stats-container');
+                classContainer.innerHTML = '';
+                
+                Object.keys(CLASS_ROSTER).forEach(className => {
+                    const card = document.createElement('div');
+                    card.className = 'class-card';
+                    card.id = `card-${className}`;
+                    card.innerHTML = `
+                        <div class="class-header">
+                            <span class="class-name">${className}</span>
+                            <span class="class-pct">0%</span>
+                        </div>
+                        <div class="class-details">
+                            <span>Voted: <b id="voted-${className}">0</b></span>
+                            <span>Total: <b id="total-${className}">${CLASS_ROSTER[className].length}</b></span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill" id="bar-${className}"></div>
+                        </div>
+                    `;
+                    classContainer.appendChild(card);
+                });
+
+                db.ref('voters').on('value', (snapshot) => {
+                    const votedData = snapshot.val() || {};
+                    const votedIds = Object.keys(votedData);
+                    const votedCount = votedIds.length;
+                    const waitingCount = totalStudents - votedCount;
+
+                    document.getElementById('home-voted').textContent = votedCount;
+                    document.getElementById('home-waiting').textContent = waitingCount;
+
+                    Object.keys(CLASS_ROSTER).forEach(className => {
+                        const classIds = CLASS_ROSTER[className];
+                        const classTotal = classIds.length;
+                        const classVoted = classIds.filter(id => votedData[id]).length;
+                        const percentage = classTotal > 0 ? ((classVoted / classTotal) * 100).toFixed(1) : 0;
+
+                        document.getElementById(`voted-${className}`).textContent = classVoted;
+                        document.getElementById(`total-${className}`).textContent = classTotal;
+                        
+                        const pctEl = document.querySelector(`#card-${className} .class-pct`);
+                        if(pctEl) pctEl.textContent = `${percentage}%`;
+
+                        const barEl = document.getElementById(`bar-${className}`);
+                        if(barEl) barEl.style.width = `${percentage}%`;
+                    });
+                });
+            },
+
+            verifyVoter: async () => {
+                const inputId = document.getElementById('voterId').value.trim();
+                const inputPass = document.getElementById('voterPass').value.trim().toUpperCase();
+                const spinner = document.getElementById('login-spinner');
+
+                if (!inputId || !inputPass) {
+                    showToast("Please enter Voter ID and Password", 'error');
+                    return;
+                }
+
+                spinner.classList.remove('hidden');
+
+                try {
+                    const voterData = VOTERS[inputId];
+                    if (!voterData) {
+                        showToast("Invalid Voter ID", 'error');
+                        spinner.classList.add('hidden');
+                        return;
+                    }
+
+                    const nameClean = voterData.name.replace(/[^a-zA-Z]/g, ''); 
+                    const namePart = nameClean.substring(0, 4);
+                    
+                    if (!voterData.dob) {
+                        showToast("Date of Birth missing. Contact Admin.", 'error');
+                        spinner.classList.add('hidden');
+                        return;
+                    }
+                    const dobPart = voterData.dob.replace(/-/g, '');
+                    const targetPassword = namePart + dobPart;
+
+                    if (inputPass !== targetPassword) {
+                        showToast("Incorrect Password", 'error');
+                        spinner.classList.add('hidden');
+                        return;
+                    }
+
+                    const snapshot = await db.ref(`voters/${inputId}`).once('value');
+                    if (snapshot.exists()) {
+                        showToast("This voter has already voted", 'error');
+                        spinner.classList.add('hidden');
+                        return;
+                    }
+
+                    currentVoter = { id: inputId, name: voterData.name };
+                    document.getElementById('display-voter-name').textContent = voterData.name;
+
+                    spinner.classList.add('hidden');
+                    app.startVotingProcess();
+
+                } catch (err) {
+                    console.error(err);
+                    showToast("Error occurred", 'error');
+                    spinner.classList.add('hidden');
+                }
+            },
+
+            verifyAdmin: () => {
+                const u = document.getElementById('adminUser').value.trim();
+                const p = document.getElementById('adminPass').value.trim();
+
+                if(u === 'naseefugr' && p === 'ugr1022') {
+                    app.loadAdminData();
+                    switchPage('admin-page');
+                } else {
+                    showToast("Invalid Username or Password", 'error');
+                }
+            },
+
+            startVotingProcess: () => {
+                currentStepIndex = 0;
+                switchPage('inking-page');
+                playTone('click');
+
+                const brush = document.getElementById('brush-anim');
+                const ink = document.getElementById('ink-path');
+                const text = document.getElementById('inking-status');
+                
+                brush.className = 'brush-svg';
+                ink.classList.remove('anim-ink-draw');
+                text.classList.remove('anim-text-fade');
+                void brush.offsetWidth;
+
+                brush.classList.add('anim-brush-enter');
+                
+                setTimeout(() => {
+                    brush.classList.add('anim-brush-draw');
+                    ink.classList.add('anim-ink-draw');
+                }, 800);
+
+                setTimeout(() => {
+                    brush.classList.add('anim-brush-exit');
+                }, 2000);
+
+                setTimeout(() => {
+                    text.classList.add('anim-text-fade');
+                }, 2200);
+
+                setTimeout(() => {
+                    app.renderVotingScreen();
+                    switchPage('voting-page');
+                }, 3000);
+            },
+
+            renderVotingScreen: () => {
+                const position = POSITIONS[currentStepIndex];
+                const list = NOMINEES[position];
+                
+                document.getElementById('position-title').textContent = position.charAt(0).toUpperCase() + position.slice(1);
+                const container = document.getElementById('nominees-container');
+                container.innerHTML = '';
+
+                list.forEach(nominee => {
+                    const card = document.createElement('div');
+                    card.className = 'nominee-card';
+                    card.onclick = () => app.castVote(position, nominee.id, nominee.name);
+                    
+                    card.innerHTML = `
+                        <img src="${nominee.photo}" class="nominee-img" alt="${nominee.name}">
+                        <div class="nominee-info">
+                            <div class="nominee-name">${nominee.name}</div>
+                            <div class="nominee-role">${position}</div>
+                        </div>
+                        <div class="vote-btn-overlay">VOTE</div>
+                    `;
+                    container.appendChild(card);
+                });
+            },
+
+            castVote: async (position, nomineeId, nomineeName) => {
+                if(!confirm(`Confirm vote for ${nomineeName} as ${position}?`)) return;
+                playTone('click');
+
+                try {
+                    const voteRef = db.ref(`votes/${position}/${nomineeId}`);
+                    const snapshot = await voteRef.once('value');
+                    const currentCount = snapshot.val() || 0;
+                    await voteRef.set(currentCount + 1);
+                } catch (e) {
+                    showToast("Failed to save vote", 'error');
+                    return;
+                }
+
+                if (currentStepIndex === POSITIONS.length - 1) {
+                    await db.ref(`voters/${currentVoter.id}`).set(true);
+                    app.finishVoting();
+                } else {
+                    currentStepIndex++;
+                    app.renderVotingScreen();
+                }
+            },
+
+            finishVoting: () => {
+                switchPage('success-page');
+                playTone('success');
+                
+                const lid = document.getElementById('box-lid');
+                const paper = document.getElementById('vote-paper');
+                const boxBody = document.getElementById('box-body');
+
+                lid.classList.remove('open');
+                paper.classList.remove('paper-prepare', 'paper-drop');
+                boxBody.classList.remove('box-shake');
+                void paper.offsetWidth;
+
+                setTimeout(() => {
+                    lid.classList.add('open');
+                    paper.classList.add('paper-prepare');
+                }, 500);
+
+                setTimeout(() => {
+                    paper.classList.remove('paper-prepare');
+                    paper.classList.add('paper-drop');
+                }, 1500);
+
+                setTimeout(() => {
+                    boxBody.classList.add('box-shake');
+                }, 2200);
+
+                setTimeout(() => {
+                    lid.classList.remove('open');
+                }, 2800);
+
+                setTimeout(() => {
+                    currentVoter = null;
+                    document.getElementById('voterId').value = '';
+                    document.getElementById('voterPass').value = '';
+                    lid.classList.remove('open');
+                    paper.classList.remove('paper-prepare', 'paper-drop');
+                    app.goToLogin();
+                }, 5000);
+            },
+
+            loadAdminData: () => {
+                const totalStudents = Object.keys(VOTERS).length;
+                document.getElementById('stat-total').textContent = totalStudents;
+
+                const votesContainer = document.getElementById('admin-stats');
+                votesContainer.innerHTML = '<div class="spinner"></div>';
+
+                db.ref('votes').on('value', (snapshot) => {
+                    const data = snapshot.val() || {};
+                    votesContainer.innerHTML = '';
+
+                    POSITIONS.forEach(pos => {
+                        const nominees = NOMINEES[pos];
+                        const posData = data[pos] || {};
+                        let total = 0;
+                        
+                        nominees.forEach(nom => {
+                            if(posData[nom.id]) total += posData[nom.id];
+                        });
+
+                        let html = `<div class="nom-stat-card"><h3>${pos.toUpperCase()}</h3>`;
+                        
+                        nominees.forEach(nom => {
+                            const count = posData[nom.id] || 0;
+                            const pct = total > 0 ? (count / total) * 100 : 0;
+                            html += `
+                                <div class="stat-row">
+                                    <span>${nom.name}</span>
+                                    <strong>${count}</strong>
+                                </div>
+                                <div class="stat-bar-bg">
+                                    <div class="stat-bar-fill" style="width: ${pct}%"></div>
+                                </div>
+                                <div style="height: 15px;"></div>
+                            `;
+                        });
+
+                        html += `</div>`;
+                        votesContainer.innerHTML += html;
+                    });
+                });
+
+                db.ref('voters').on('value', (snapshot) => {
+                    const votedData = snapshot.val() || {};
+                    const votedIds = Object.keys(votedData);
+                    const votedCount = votedIds.length;
+                    const waitingCount = totalStudents - votedCount;
+
+                    document.getElementById('stat-voted').textContent = votedCount;
+                    document.getElementById('stat-waiting').textContent = waitingCount;
+                    
+                    document.getElementById('count-voted-badge').textContent = votedCount;
+                    document.getElementById('count-pending-badge').textContent = waitingCount;
+
+                    const votedListContainer = document.getElementById('voted-list');
+                    const pendingListContainer = document.getElementById('pending-list');
+                    
+                    votedListContainer.innerHTML = '';
+                    pendingListContainer.innerHTML = '';
+
+                    const allIds = Object.keys(VOTERS).sort();
+                    
+                    allIds.forEach(id => {
+                        const name = VOTERS[id].name;
+                        const hasVoted = votedIds.includes(id);
+                        
+                        const row = document.createElement('div');
+                        row.className = 'voter-row';
+                        
+                        const rowHtml = `
+                            <span>${name}</span> 
+                            <div>
+                                <span style="font-family:monospace; color:#666; margin-right:10px;">${id}</span>
+                                ${hasVoted ? '<span class="status-badge status-voted">Voted</span>' : '<span class="status-badge status-pending">Pending</span>'}
+                            </div>
+                        `;
+
+                        row.innerHTML = rowHtml;
+
+                        if (hasVoted) {
+                            votedListContainer.appendChild(row);
+                        } else {
+                            pendingListContainer.appendChild(row);
+                        }
+                    });
+                });
+            },
+
+            resetElection: async () => {
+                if(!confirm("ARE YOU SURE? This deletes all votes.")) return;
+                
+                try {
+                    await db.ref('votes').set(null);
+                    await db.ref('voters').set(null);
+                    showToast("Election Reset Successfully", 'success');
+                    app.loadAdminData();
+                } catch(e) {
+                    showToast("Error resetting", 'error');
+                }
+            }
+        };
+
+        // --- INITIALIZATION ---
+        // Check time immediately on load
+        checkElectionTime();
+
+        window.app = app;
+    </script>
+</body>
+</html>

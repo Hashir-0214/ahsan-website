@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(null);
-  
+
   // 2. Get current path
   const pathname = usePathname();
 
@@ -33,7 +33,7 @@ export default function Header() {
           to: "/publications/turuq",
           label: "TURUQ",
         },
-        
+
         {
           to: "/publications/chromadiaries",
           label: "Chromadiaries",
@@ -41,6 +41,7 @@ export default function Header() {
       ],
     },
     { to: "/committee", label: "Committee" },
+    { to: "/voting", label: "Voting" },
     { to: "/events", label: "Events & Calender" },
     { to: "/contact", label: "Contact" },
   ];
@@ -75,17 +76,16 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => {
-            const isParentActive = link.subLinks 
+            const isParentActive = link.subLinks
               ? link.subLinks.some(sub => pathname === sub.to)
               : pathname === link.to;
 
             if (link.subLinks) {
               return (
                 <div key={link.label} className="relative group">
-                  <button 
-                    className={`flex items-center px-2 lg:px-4 py-1 lg:py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${
-                      isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
-                    }`}
+                  <button
+                    className={`flex items-center px-2 lg:px-4 py-1 lg:py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-colors group-hover:bg-purple-50/50 ${isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
+                      }`}
                   >
                     {link.label}
                     <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-300 group-hover:-rotate-180 ${isParentActive ? "text-[#16a741]" : "text-[#16a741]"}`} />
@@ -98,23 +98,22 @@ export default function Header() {
 
                       <div className="flex flex-col">
                         {link.subLinks.map((subItem) => {
-                            const isSubActive = pathname === subItem.to;
-                            return (
-                                <Link
-                                    key={subItem.label}
-                                    href={subItem.to}
-                                    className={`flex justify-between py-2 lg:py-3 px-3 lg:px-6 rounded-xl transition-colors group/item ${
-                                        isSubActive 
-                                        ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10"
-                                        : "hover:bg-gradient-to-r hover:from-[#16a741]/5 hover:to-[#1FA447]/5"
-                                    }`}
-                                >
-                                    <p className={`text-[12px] lg:text-[14px] poppins-semibold ${isSubActive ? "text-[#1FA447]" : "text-gray-800 group-hover/item:text-[#1FA447]"}`}>
-                                    {subItem.label}
-                                    </p>
-                                    <ExternalLink className={`w-4 h-4 mt-1 ${isSubActive ? "text-[#16a741]" : "text-gray-400 group-hover/item:text-[#16a741]"}`} />
-                                </Link>
-                            )
+                          const isSubActive = pathname === subItem.to;
+                          return (
+                            <Link
+                              key={subItem.label}
+                              href={subItem.to}
+                              className={`flex justify-between py-2 lg:py-3 px-3 lg:px-6 rounded-xl transition-colors group/item ${isSubActive
+                                  ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10"
+                                  : "hover:bg-gradient-to-r hover:from-[#16a741]/5 hover:to-[#1FA447]/5"
+                                }`}
+                            >
+                              <p className={`text-[12px] lg:text-[14px] poppins-semibold ${isSubActive ? "text-[#1FA447]" : "text-gray-800 group-hover/item:text-[#1FA447]"}`}>
+                                {subItem.label}
+                              </p>
+                              <ExternalLink className={`w-4 h-4 mt-1 ${isSubActive ? "text-[#16a741]" : "text-gray-400 group-hover/item:text-[#16a741]"}`} />
+                            </Link>
+                          )
                         })}
                       </div>
                     </div>
@@ -129,15 +128,13 @@ export default function Header() {
               <Link
                 key={link.to}
                 href={link.to}
-                className={`relative px-2 lg:px-4 py-1 lg:py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-all duration-300 group ${
-                    isActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
-                }`}
+                className={`relative px-2 lg:px-4 py-1 lg:py-2 text-[12px] lg:text-[14px] poppins-medium rounded-lg transition-all duration-300 group ${isActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
+                  }`}
               >
                 <span className="relative z-10">{link.label}</span>
                 {/* Active Background Span */}
-                <span className={`absolute inset-0 bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10 rounded-lg transition-opacity ${
-                    isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                }`}></span>
+                <span className={`absolute inset-0 bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10 rounded-lg transition-opacity ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                  }`}></span>
               </Link>
             );
           })}
@@ -176,44 +173,40 @@ export default function Header() {
                   >
                     <button
                       onClick={() => toggleMobileSubmenu(index)}
-                      className={`w-full flex items-center justify-between px-4 py-3 poppins-medium rounded-lg hover:bg-purple-50 transition-all ${
-                          isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
-                      }`}
+                      className={`w-full flex items-center justify-between px-4 py-3 poppins-medium rounded-lg hover:bg-purple-50 transition-all ${isParentActive ? "text-[#1FA447]" : "text-gray-700 hover:text-[#1FA447]"
+                        }`}
                     >
                       {link.label}
                       <ChevronDown
                         size={16}
-                        className={`transition-transform duration-300 ${
-                          mobileSubmenuOpen === index ? "rotate-180" : ""
-                        }`}
+                        className={`transition-transform duration-300 ${mobileSubmenuOpen === index ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
                     {/* Expandable Content */}
                     <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        mobileSubmenuOpen === index
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileSubmenuOpen === index
                           ? "max-h-40 opacity-100"
                           : "max-h-0 opacity-0"
-                      }`}
+                        }`}
                     >
                       <div className="pl-4 pr-2 py-2 space-y-1 bg-gray-50/50 rounded-b-lg">
                         {link.subLinks.map((subItem) => {
-                            const isSubActive = pathname === subItem.to;
-                            return (
-                                <Link
-                                    key={subItem.label}
-                                    href={subItem.to}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className={`flex items-center px-4 py-2.5 text-sm rounded-md transition-colors shadow-sm border border-transparent ${
-                                        isSubActive 
-                                        ? "text-[#1FA447] bg-white border-purple-100" 
-                                        : "text-gray-600 hover:text-[#1FA447] hover:bg-white hover:border-purple-100"
-                                    }`}
-                                >
-                                    {subItem.label}
-                                </Link>
-                            );
+                          const isSubActive = pathname === subItem.to;
+                          return (
+                            <Link
+                              key={subItem.label}
+                              href={subItem.to}
+                              onClick={() => setIsMenuOpen(false)}
+                              className={`flex items-center px-4 py-2.5 text-sm rounded-md transition-colors shadow-sm border border-transparent ${isSubActive
+                                  ? "text-[#1FA447] bg-white border-purple-100"
+                                  : "text-gray-600 hover:text-[#1FA447] hover:bg-white hover:border-purple-100"
+                                }`}
+                            >
+                              {subItem.label}
+                            </Link>
+                          );
                         })}
                       </div>
                     </div>
@@ -228,11 +221,10 @@ export default function Header() {
                   key={link.to}
                   href={link.to}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`px-4 py-3 poppins-medium rounded-lg transition-all duration-300 ${
-                      isActive 
+                  className={`px-4 py-3 poppins-medium rounded-lg transition-all duration-300 ${isActive
                       ? "bg-gradient-to-r from-[#16a741]/10 to-[#1FA447]/10 text-[#1FA447]"
                       : "text-gray-700 hover:bg-gradient-to-r hover:from-[#16a741]/10 hover:to-[#1FA447]/10 hover:text-[#1FA447]"
-                  }`}
+                    }`}
                   style={{
                     animation: `slideIn 0.3s ease-out ${index * 0.05}s both`,
                   }}
