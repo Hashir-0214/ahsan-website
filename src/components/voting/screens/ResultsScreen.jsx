@@ -210,9 +210,11 @@ function WinnerCard({ position, candidates, votes, onClick, delay }) {
                 <h3 className="text-xl font-extrabold text-[#1a237e] group-hover:text-blue-600 transition-colors line-clamp-1">
                     {winner.name}
                 </h3>
-                <div className="flex items-center justify-center gap-2 mt-2 mb-6">
-                    <span className="text-3xl font-black text-gray-900">{percentage}%</span>
-                    <span className="text-sm font-medium text-gray-400 self-end mb-1">of votes</span>
+                <div className="flex flex-col items-center justify-center mt-2 mb-6">
+                    <span className="text-4xl font-black text-[#1a237e]">{percentage}%</span>
+                    <span className="text-sm font-bold text-gray-600 bg-blue-50 px-3 py-1 rounded-full mt-1 border border-blue-100">
+                        Majority: {winnerVotes} votes
+                    </span>
                 </div>
 
                 {/* Progress Bar */}
