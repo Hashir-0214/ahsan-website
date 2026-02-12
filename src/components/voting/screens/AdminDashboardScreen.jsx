@@ -5,7 +5,11 @@ import { ref, onValue, set, remove, update } from "firebase/database";
 import { db } from "@/lib/firebase";
 import { CLASS_ROSTER, NOMINEES, POSITIONS, VOTERS, ELECTION_REF } from "@/data/votingData";
 
+import ResultsScreen from "./ResultsScreen"; // Added import
+
 export default function AdminDashboardScreen({ onLogout, role }) {
+    const [showResults, setShowResults] = useState(false); // Added state
+
     const [stats, setStats] = useState({
         total: 0,
         voted: 0,
@@ -19,6 +23,7 @@ export default function AdminDashboardScreen({ onLogout, role }) {
         startTime: "",
         endTime: "",
         broadcast: { message: "", active: false },
+        resultsPublished: false, // Added resultsPublished
         maintenance: false
     });
     const [activeTab, setActiveTab] = useState("STATS"); // STATS, VOTERS, LOGS, SETTINGS, CANDIDATES
@@ -106,6 +111,7 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                     startTime: toLocalISOString(data.startTime),
                     endTime: toLocalISOString(data.endTime),
                     broadcast: data.broadcast || { message: "", active: false },
+                    resultsPublished: data.resultsPublished || false, // Sync from Firebase
                     maintenance: data.maintenance || false
                 });
             }
@@ -181,6 +187,7 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                 startTime: startTs,
                 endTime: endTs,
                 broadcast: config.broadcast,
+                resultsPublished: config.resultsPublished, // Save to Firebase
                 maintenance: config.maintenance
             });
             alert("Settings Saved!");
@@ -311,6 +318,12 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                         </span>
                     </div>
                     <div className="flex flex-wrap justify-center gap-3 w-full md:w-auto">
+                        <button
+                            onClick={() => setShowResults(true)}
+                            className="bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors text-sm px-6 py-2 shadow-lg flex items-center gap-2 flex-grow md:flex-grow-0 whitespace-nowrap"
+                        >
+                            <span className="text-xl">🏆</span> Live Results Screen
+                        </button>
                         <button
                             onClick={() => downloadCSV(stats.votes, "election_results.csv")}
                             className="bg-green-50 text-green-700 font-semibold rounded-lg hover:bg-green-100 transition-colors text-sm px-4 py-2 flex-grow md:flex-grow-0 whitespace-nowrap"
@@ -748,6 +761,23 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                                 </div>
                             </div>
 
+                            {/* Results Publishing */}
+                            <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-100">
+                                <div>
+                                    <h3 className="font-bold text-purple-900">Publish Results</h3>
+                                    <p className="text-sm text-purple-700">Make Live Results visible to the public on Home Page.</p>
+                                </div>
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        className="sr-only peer"
+                                        checked={config.resultsPublished}
+                                        onChange={(e) => setConfig({ ...config, resultsPublished: e.target.checked })}
+                                    />
+                                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                                </label>
+                            </div>
+
                             {/* Maintenance Mode */}
                             <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border border-yellow-100">
                                 <div>
@@ -776,6 +806,10 @@ export default function AdminDashboardScreen({ onLogout, role }) {
                 )}
 
             </div>
+
+            {/* Results Screen Overlay */}
+            {showResults && <ResultsScreen onClose={() => setShowResults(false)} />}
         </div>
     );
 }
+

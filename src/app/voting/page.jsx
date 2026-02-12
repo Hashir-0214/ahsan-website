@@ -9,22 +9,30 @@ import VotingBallot from "@/components/voting/screens/VotingBallot";
 import SuccessScreen from "@/components/voting/screens/SuccessScreen";
 import AdminLoginScreen from "@/components/voting/screens/AdminLoginScreen";
 import AdminDashboardScreen from "@/components/voting/screens/AdminDashboardScreen";
+import ResultsScreen from "@/components/voting/screens/ResultsScreen"; // Added ResultsScreen
 
 import { db } from "@/lib/firebase";
 import { ref, onValue } from "firebase/database";
 import { useEffect } from "react";
 import { ELECTION_REF } from "@/data/votingData";
+import { Trophy } from "lucide-react"; // Added Trophy import
 
 export default function VotingPage() {
     const [screen, setScreen] = useState("INTRO"); // INTRO, LOGIN, INKING, BALLOT, SUCCESS, ADMIN_LOGIN, ADMIN_DASHBOARD
     const [currentVoter, setCurrentVoter] = useState(null);
-    const [adminRole, setAdminRole] = useState("admin"); 
+    const [adminRole, setAdminRole] = useState("admin");
     const [maintenance, setMaintenance] = useState(false);
+    const [showResults, setShowResults] = useState(false); // New state for results
+    const [resultsDismissed, setResultsDismissed] = useState(false); // Allow dismissing results to access admin
 
     useEffect(() => {
-        const maintenanceRef = ref(db, `${ELECTION_REF}/config/voting/maintenance`);
+        const maintenanceRef = ref(db, `${ELECTION_REF}/config/voting`); // Changed to entire config
         const unsubscribe = onValue(maintenanceRef, (snapshot) => {
-            setMaintenance(snapshot.val() || false);
+            const data = snapshot.val();
+            if (data) {
+                setMaintenance(data.maintenance || false);
+                setShowResults(data.resultsPublished || false);
+            }
         });
         return () => unsubscribe();
     }, []);
@@ -75,17 +83,35 @@ export default function VotingPage() {
 
     return (
         <div className="pt-16">
-            {screen === "INTRO" && <IntroScreen onStart={handleStart} onAdmin={handleAdminAuth} />}
-            {screen === "LOGIN" && <LoginScreen onLoginSuccess={handleLoginSuccess} />}
-            {screen === "ADMIN_LOGIN" && (
-                <AdminLoginScreen onLoginSuccess={handleAdminLoginSuccess} onBack={() => setScreen("INTRO")} />
+            {/* Results Screen Override (Public) */}
+            {showResults && !resultsDismissed && screen !== "ADMIN_LOGIN" && screen !== "ADMIN_DASHBOARD" ? (
+                <ResultsScreen onClose={() => setResultsDismissed(true)} />
+            ) : (
+                <>
+                    {screen === "INTRO" && <IntroScreen onStart={handleStart} onAdmin={handleAdminAuth} />}
+                    {screen === "LOGIN" && <LoginScreen onLoginSuccess={handleLoginSuccess} />}
+                    {screen === "ADMIN_LOGIN" && (
+                        <AdminLoginScreen onLoginSuccess={handleAdminLoginSuccess} onBack={() => setScreen("INTRO")} />
+                    )}
+                    {screen === "ADMIN_DASHBOARD" && <AdminDashboardScreen onLogout={() => setScreen("INTRO")} role={adminRole} />}
+                    {screen === "INKING" && <InkingScreen onComplete={handleInkingComplete} />}
+                    {screen === "BALLOT" && (
+                        <VotingBallot voter={currentVoter} onFinished={handleVotingFinished} />
+                    )}
+                    {screen === "SUCCESS" && <SuccessScreen onRestart={handleRestart} />}
+                </>
             )}
-            {screen === "ADMIN_DASHBOARD" && <AdminDashboardScreen onLogout={() => setScreen("INTRO")} role={adminRole} />}
-            {screen === "INKING" && <InkingScreen onComplete={handleInkingComplete} />}
-            {screen === "BALLOT" && (
-                <VotingBallot voter={currentVoter} onFinished={handleVotingFinished} />
+
+            {/* Re-open Results Button (Floating) */}
+            {showResults && resultsDismissed && (
+                <button
+                    onClick={() => setResultsDismissed(false)}
+                    className="fixed bottom-4 left-4 z-40 bg-white text-[#1a237e] px-4 py-3 rounded-xl shadow-lg border border-blue-100 font-bold flex items-center gap-2 hover:bg-blue-50 transition-colors"
+                >
+                    <Trophy size={20} className="text-yellow-500" />
+                    Show Results
+                </button>
             )}
-            {screen === "SUCCESS" && <SuccessScreen onRestart={handleRestart} />}
         </div>
     );
 }

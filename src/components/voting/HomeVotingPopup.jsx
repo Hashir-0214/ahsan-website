@@ -6,7 +6,8 @@ import { ref, onValue } from "firebase/database";
 import { db } from "@/lib/firebase";
 import { ELECTION_REF } from "@/data/votingData";
 import Link from "next/link";
-import { X, Vote } from "lucide-react";
+import { X, Vote, Trophy } from "lucide-react";
+import ResultsScreen from "./screens/ResultsScreen"; // Import ResultsScreen
 
 export default function HomeVotingPopup() {
     const [isVisible, setIsVisible] = useState(false);
@@ -36,6 +37,13 @@ export default function HomeVotingPopup() {
             return;
         }
 
+        // Check if results are published - OVERRIDE everything else
+        if (cfg.resultsPublished) {
+            setStatus("results_out"); // New Status
+            setIsVisible(true);
+            return;
+        }
+
         const now = Date.now();
         const start = cfg.startTime || 0;
         const end = cfg.endTime || Infinity;
@@ -60,6 +68,19 @@ export default function HomeVotingPopup() {
     }, [config]);
 
     if (!isVisible || status === "ended" || status === "loading") return null;
+
+    // Direct Full Screen for Results
+    if (status === "results_out") {
+        return (
+            <AnimatePresence>
+                {isVisible && (
+                    <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4">
+                        <ResultsScreen onClose={() => setIsVisible(false)} />
+                    </div>
+                )}
+            </AnimatePresence>
+        );
+    }
 
     return (
         <AnimatePresence>
