@@ -110,9 +110,9 @@ export default function ResultsScreen({ onClose }) {
     const activeNominees = nomineesData || NOMINEES;
 
     return (
-        <div className="fixed inset-0 z-[9999] bg-gray-50/95 backdrop-blur-sm overflow-y-auto">
+        <div className={onClose ? "fixed inset-0 z-[9999] bg-gray-50/95 backdrop-blur-sm overflow-y-auto" : "w-full pt-20 pb-12"}>
             {/* Header */}
-            <div className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
+            <div className={onClose ? "sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm" : "bg-white border border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm mb-8 rounded-2xl mx-4 md:mx-auto max-w-7xl"}>
                 <div>
                     <h1 className="text-2xl font-bold text-[#1a237e] flex items-center gap-2">
                         <Trophy className="text-yellow-500" />
@@ -120,12 +120,14 @@ export default function ResultsScreen({ onClose }) {
                     </h1>
                     <p className="text-sm text-gray-500">Live Analytics & Class Breakdowns</p>
                 </div>
-                <button
-                    onClick={onClose}
-                    className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                >
-                    <X size={24} className="text-gray-600" />
-                </button>
+                {onClose && (
+                    <button
+                        onClick={onClose}
+                        className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                    >
+                        <X size={24} className="text-gray-600" />
+                    </button>
+                )}
             </div>
 
             <div className="max-w-7xl mx-auto p-6 md:p-8">

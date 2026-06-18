@@ -18,6 +18,10 @@ export default function Header() {
   // 2. Get current path
   const pathname = usePathname();
 
+  if (pathname && pathname.startsWith('/admin')) {
+    return null;
+  }
+
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/programs", label: "Programs" },

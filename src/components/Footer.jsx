@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Mail,
   Phone,
@@ -14,6 +17,12 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname && pathname.startsWith('/admin')) {
+    return null;
+  }
+
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
